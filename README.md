@@ -1,11 +1,11 @@
-# `saas-theme`
+# `MoonTicket`
 
 > TODO: description
 
 ## Installation
 
 ```
-lerna bootstrap
+npm install
 ```
 
 ## Run Development
