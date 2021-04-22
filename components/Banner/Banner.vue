@@ -53,14 +53,14 @@
               <span class="icon">
                 <i class="ion-ios-play-outline" />
               </span>
-              {{ $t('saasLanding.banner_watchvideo') }}
+              {{ $t('saasLanding.banner_btn_nexticos') }}
             </v-btn>
             <v-btn
               :href="link.saas.login"
               color="secondary"
               large
             >
-              {{ $t('saasLanding.getstarted') }}
+              {{ $t('saasLanding.banner_btn_getstarted') }}
             </v-btn>
           </div>
         </div>

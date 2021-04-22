@@ -52,9 +52,11 @@
                       </span>
                     </h6>
                   </div>
-                  <p class="use-text-paragraph">
-                    {{ item.text }}
-                  </p>
+                  <div class="align-self-center">
+                    <p v-for="(txt, idx) in item.text" :key="idx" class="use-text-paragraph">
+                      {{ txt }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </slick>
@@ -95,8 +97,6 @@
 
 <script>
 import Hidden from '../Hidden'
-import imgAPI from '~/static/images/imgAPI'
-
 import colors from 'vuetify/lib/util/colors'
 
 const palette = {
@@ -117,75 +117,94 @@ const theme = {
 
 const testiData = [
   {
-    text:
-      'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam nec ex aliquet, aliquam neque non.',
-    avatar: imgAPI.avatar[10],
-    name: 'John Doe',
-    title: 'Chief Digital Officer',
-    logo: '/images/logos/agency.png'
+    avatar: '/images/logos3/logo_aioz.png',
+    name: 'AIOZ Network',
+    title: 'AIOZ',
+    logo: '/images/logos3/logo_aioz.png',
+    text: [
+      `AIOZ Network IDO was offered at 0.015$us on April 1st and went up to 2.65$us on April 3rd, doing a 176x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred and seventy-five thousand dollars, after 48 hours. `,
+      `AIOZ Network is a company that offers reliable CDN to web developers based in the blockchain to make it more reliable, efficient and low cost.`
+    ]
   },
   {
-    text:
-      'Vestibulum sit amet tortor sit amet libero lobortis semper at et odio. In eu tellus tellus. Pellentesque ullamcorper aliquet ultrices. Aenean facilisis vitae purus facilisis semper. Nam vitae scelerisque lorem, quis tempus libero.',
-    avatar: imgAPI.avatar[1],
-    name: 'Jean Doe',
-    title: 'Chief Digital Officer',
-    logo: '/images/logos/architect.png'
+    avatar: '/images/logos3/logo_cardstarter.png',
+    name: 'Cardstarter',
+    title: 'CARDS',
+    logo: '/images/logos3/logo_cardstarter.png',
+    text: [
+      `Cardstarter ICO was offered at 0.15$us in Round 2 on March 25th and went up to 2.62$us on April 1st, doing a 17x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than sixteen thousand dollars, after 48 hours, but this coin is now above 20$us meaning a 133x to all the diamond hands. `,
+      `CardStarter is a decentralized accelerator and swapping platform, connecting early stage Cardano projects with investors.`
+    ]
   },
   {
-    text:
-      'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    avatar: imgAPI.avatar[2],
-    name: 'Jena Doe',
-    title: 'Graphic Designer',
-    logo: '/images/logos/cloud.png'
+    avatar: '/images/logos3/logo_polkamon.jpg',
+    name: 'Polkamon',
+    title: 'PMON',
+    logo: '/images/logos3/logo_polkamon.jpg',
+    text: [
+      `Polkamon ICO was offered at 0.35$us on March 1st and went up to 62.10$us on April 2nd, doing a 177x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred and seventy-six thousand dollars, after 48 hours. `,
+      `Polkamon is a NFT project and has beautifully animated digital collectibles to buy and sell.`
+    ]
   },
   {
-    text: 'Sed imperdiet enim ligula, vitae viverra justo porta vel.',
-    avatar: imgAPI.avatar[3],
-    name: 'Jovelin Doe',
-    title: 'Senior Graphic Designer',
-    logo: '/images/logos/starter.png'
+    avatar: '/images/logos3/logo_polkadomain.png',
+    name: 'Polkadomain',
+    title: 'NAME',
+    logo: '/images/logos3/logo_polkadomain.png',
+    text: [
+      `PolkaDomain ICO was offered at 0.16$us on April 16th and went up to 3.78$us on April 18th, doing a 23x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than twenty-two thousand dollars, after 48 hours. `,
+      `Polkadomain help to connect a domain to your digital identity, using NFT technology to store a domain.`
+    ]
   },
   {
-    text:
-      'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    avatar: imgAPI.avatar[4],
-    name: 'Jihan Doe',
-    title: 'CEO Software House',
-    logo: '/images/logos/coin.png'
+    avatar: '/images/logos3/logo_yellow_road.png',
+    name: 'Yellow Road',
+    title: 'ROAD',
+    logo: '/images/logos3/logo_yellow_road.png',
+    text: [
+      `Yellow Road ICO was offered at 0.2$us on April 10th and went up to 21.01$us on April 11th, doing a 105x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made hundred and four thousand dollars, after 24 hours. `,
+      `Yellow Road aims to achieve that through a platform dedicated to BSC project IDOs so they get backed by a community that trusts in them. It offers a range of funding solutions from smart auctions to community building and engagement programs for new projects.`
+    ]
   },
   {
-    text:
-      'Vestibulum sit amet tortor sit amet libero lobortis semper at et odio. In eu tellus tellus. Pellentesque ullamcorper aliquet ultrices. Aenean facilisis vitae purus facilisis semper. Nam vitae scelerisque lorem, quis tempus libero.',
-    avatar: imgAPI.avatar[6],
-    name: 'Jovelin Doe',
-    title: 'Senior Graphic Designer',
-    logo: '/images/logos/fashion.png'
+    avatar: '/images/logos3/logo_splyt.jpg',
+    name: 'Splyt',
+    title: 'SHOPX',
+    logo: '/images/logos3/logo_splyt.jpg',
+    text: [
+      `Splyt ICO was offered at 0.042$us on March 31th and went up to 4.73$us on March 31th, doing a 112x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than hundred and eleven thousand dollars, in less than 24 hours.`,
+      `Splyt’s eNFT (E-commerce-Non-Fungible-Token) tokenizes off-chain products on the blockchain. This streamlines digital sales and enables lifetime product data tracking not previously possible. The eNFT empowers a transparent e-commerce ecosystem.`
+    ]
   },
   {
-    text:
-      'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    avatar: imgAPI.avatar[7],
-    name: 'John Doe',
-    title: 'Senior Graphic Designer',
-    logo: '/images/logos/mobile.png'
+    avatar: '/images/logos3/logo_unmarshal.png',
+    name: 'Unmarshal',
+    title: 'MARSH',
+    logo: '/images/logos3/logo_unmarshal.png',
+    text: [
+      `Unmarshal ICO was offered at 0.17$us on March 30th and went up to 8.34$us on March 31th, doing a 49x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made forty-eight thousand dollars, after 24 hours. `,
+      `Unmarshal is a Decentralized network of blockchain data indexers and transforming tools to power DeFi applications on any chain.`
+    ]
   },
   {
-    text:
-      'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam nec ex aliquet, aliquam neque non.',
-    avatar: imgAPI.avatar[10],
-    name: 'John Doe',
-    title: 'Chief Digital Officer',
-    logo: '/images/logos/profile.png'
+    avatar: '/images/logos3/logo_blind_boxes.jpg',
+    name: 'Blind Boxes',
+    title: 'BLES',
+    logo: '/images/logos3/logo_blind_boxes.jpg',
+    text: [
+      `Blind Boxes ICO was offered at 0.15$us on March 28th and went up to 9.93$us on March 28th, doing a 66x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made sixty-five thousand dollars, in less than 24 hours. `,
+      `Blind Boxes offers collectors opportunities to discover new artists and own valuable limited-edition assets.`
+    ]
   },
   {
-    text:
-      'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    avatar: imgAPI.avatar[1],
-    name: 'Jean Doe',
-    title: 'Chief Digital Officer',
-    logo: '/images/logos/saas.png'
+    avatar: '/images/logos3/logo_a2dao.jpg',
+    name: 'A2DAO',
+    title: 'ATD',
+    logo: '/images/logos3/logo_a2dao.jpg',
+    text: [
+      `A2DAO ICO was offered at 0.1$us on March 18th and went up to 10.26$us in public sale on March 28th, doing a 102X for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred thousand dollars, after 24 hours. `,
+      `A2DAO connects blockchain startups with smart money and helps cultivate community for each respective project.`
+    ]
   }
 ]
 

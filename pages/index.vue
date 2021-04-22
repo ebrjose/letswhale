@@ -10,22 +10,13 @@
           <company-logo />
         </section>
         <section :class="!isMobile && 'space-top-short'">
-          <counter />
+          <headline />
         </section>
         <section id="feature" :class="isMobile ? 'space-top-short' : 'space-top'">
           <feature />
         </section>
         <section id="testimonials" class="space-bottom-testi">
           <testimonials />
-        </section>
-        <section id="pricing" class="space-top">
-          <pricing-plan />
-        </section>
-        <section id="faq" class="space-top-short">
-          <faq />
-        </section>
-        <section class="space-top-short space-bottom-short">
-          <news-event />
         </section>
       </div>
       <section id="footer">
@@ -34,12 +25,56 @@
       <hidden point="mdDown">
         <page-nav />
       </hidden>
-      <hidden point="mdDown">
-        <notification />
-      </hidden>
     </div>
   </div>
 </template>
+
+
+<script>
+import Header from '~/components/Header'
+import Hidden from '~/components/Hidden'
+import PageNav from '~/components/PageNav'
+import Banner from '~/components/Banner'
+import CompanyLogo from '~/components/CompanyLogo'
+import Headline from '~/components/Headline'
+import Feature from '~/components/Feature'
+import Testimonials from '~/components/Testimonials'
+// import PricingPlan from '~/components/PricingPlan'
+// import Faq from '~/components/Faq'
+// import NewsEvent from '~/components/NewsEvent'
+import FooterWithDeco from '~/components/Footer/FooterWithDeco'
+// import Notification from '~/components/Notification'
+import brand from '~/static/text/brand'
+
+export default {
+  components: {
+    'main-header': Header,
+    Banner,
+    CompanyLogo,
+    Headline,
+    Feature,
+    Testimonials,
+    FooterWithDeco,
+    PageNav,
+    Hidden
+  },
+  computed: {
+    isTablet() {
+      return (
+        this.$mq === 'mdDown' || this.$mq === 'smDown' || this.$mq === 'xsDown'
+      ) // eslint-disable-line
+    },
+    isMobile() {
+      return this.$mq === 'smDown' || this.$mq === 'xsDown'
+    }
+  },
+  head() {
+    return {
+      title: brand.saas.name + ' - Home Page'
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 @import '~/assets/styles';
@@ -89,51 +124,3 @@
   }
 }
 </style>
-
-<script>
-import Header from '~/components/Header'
-import Hidden from '~/components/Hidden'
-import PageNav from '~/components/PageNav'
-import Banner from '~/components/Banner'
-import CompanyLogo from '~/components/CompanyLogo'
-import Counter from '~/components/Counter'
-import Feature from '~/components/Feature'
-import Testimonials from '~/components/Testimonials'
-import PricingPlan from '~/components/PricingPlan'
-import Faq from '~/components/Faq'
-import NewsEvent from '~/components/NewsEvent'
-import FooterWithDeco from '~/components/Footer/FooterWithDeco'
-import Notification from '~/components/Notification'
-import brand from '~/static/text/brand'
-
-export default {
-  components: {
-    'main-header': Header,
-    Banner,
-    CompanyLogo,
-    Counter,
-    Feature,
-    Testimonials,
-    PricingPlan,
-    Faq,
-    NewsEvent,
-    FooterWithDeco,
-    PageNav,
-    Hidden,
-    Notification
-  },
-  computed: {
-    isTablet() {
-      return this.$mq === 'mdDown' || this.$mq === 'smDown' || this.$mq === 'xsDown' // eslint-disable-line
-    },
-    isMobile() {
-      return this.$mq === 'smDown' || this.$mq === 'xsDown'
-    }
-  },
-  head() {
-    return {
-      title: brand.saas.name + ' - Home Page'
-    }
-  }
-}
-</script>

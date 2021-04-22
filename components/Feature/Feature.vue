@@ -19,7 +19,8 @@
                   >
                     <div class="viewport">
                       <figure class="figure screen">
-                        <img :src="imgAPI.saas[0]" alt="screen" />
+                        <!-- <img :src="imgAPI.saas[0]" alt="screen" /> -->
+                        <img src="https://miro.medium.com/max/2400/1*2dTkU5AO-R0wM-mQx8j1Ug.gif" alt="screen">
                       </figure>
                     </div>
                   </parallax>
@@ -35,12 +36,12 @@
                   >
                     <div class="viewport">
                       <figure class="figure graphic">
-                        <img :src="imgAPI.saas[1]" alt="illustration" />
+                        <img src="/images/stat1.jpg" alt="illustration" />
                       </figure>
                     </div>
                   </parallax>
                 </section>
-                <parallax-medium />
+                <!-- <parallax-medium /> -->
               </div>
             </v-col>
             <v-col md="6" cols="12">
@@ -60,10 +61,12 @@
                     </span>
                   </title-main>
                   <h6 class="use-text-subtitle2" :class="[isMobile ? 'text-center' : 'text-left']">
-                    {{ $t('saasLanding.feature_desc1') }}
+                    <p v-html=" $t('saasLanding.feature_desc1_1')" />
+                    <p>{{ $t('saasLanding.feature_desc1_2') }}</p>
+                    <p><strong>{{ $t('saasLanding.feature_desc1_3') }}</strong></p>
                   </h6>
                   <v-btn color="primary" large class="btn">
-                    {{ $t('saasLanding.see_detail') }}
+                    {{ $t('saasLanding.banner_btn_getstarted') }}
                   </v-btn>
                 </div>
               </u-animate>
@@ -71,6 +74,7 @@
           </v-row>
         </u-animate-container>
       </div>
+
       <div class="item">
         <v-row>
           <v-col md="6" cols="12">
@@ -84,7 +88,7 @@
                 <div class="desc">
                   <title-main :align="isMobile ? 'center' : 'right'">
                     <span>
-                      {{ $t('saasLanding.feature_title1') }}
+                      {{ $t('saasLanding.feature_title2') }}
                       <strong>
                         {{ $t('saasLanding.feature_titlestrong2') }}
                       </strong>
@@ -95,7 +99,7 @@
                   </h6>
                   <div :class="[isMobile ? 'text-center' : 'text-right']">
                     <v-btn color="primary" large class="btn">
-                      {{ $t('saasLanding.see_detail') }}
+                      {{ $t('saasLanding.banner_btn_getstarted') }}
                     </v-btn>
                   </div>
                 </div>
@@ -112,7 +116,7 @@
                 >
                   <div class="viewport">
                     <figure class="figure screen">
-                      <img :src="imgAPI.saas[2]" alt="screen" />
+                      <img src="/images/BigCapitals.png" alt="screen" />
                     </figure>
                   </div>
                 </parallax>
@@ -128,12 +132,12 @@
                 >
                   <div class="viewport">
                     <figure class="graphic">
-                      <img :src="imgAPI.saas[3]" alt="illustration" />
+                      <img src="/images/SilverTray.png" alt="illustration" />
                     </figure>
                   </div>
                 </parallax>
               </section>
-              <parallax-medium />
+              <!-- <parallax-medium /> -->
             </div>
           </v-col>
         </v-row>
@@ -141,10 +145,7 @@
       <div class="item last">
         <title-main align="center">
           <span>
-            {{ $t('saasLanding.feature_title3') }}
-            <strong>
-              {{ $t('saasLanding.feature_titlestrong3') }}
-            </strong>
+            NEXT ICOs TO BE LAUCHED
           </span>
         </title-main>
         <div class="tab">
@@ -163,14 +164,18 @@
                 centered
               >
                 <v-tabs-slider color="primary" />
-                <v-tab class="tab-label" href="#tab-1">Pellentesque</v-tab>
-                <v-tab class="tab-label" href="#tab-2">Donec</v-tab>
-                <v-tab class="tab-label" href="#tab-3">Vestibulum</v-tab>
+                <v-tab class="tab-label" href="#tab-1">Ispolink</v-tab>
+                <v-tab class="tab-label" href="#tab-2">blockbank</v-tab>
+                <v-tab class="tab-label" href="#tab-3">charli3</v-tab>
                 <v-tab-item value="tab-1">
                   <div class="tab-content">
                     <section>
                       <h6 class="text-center use-text-subtitle2">
-                        {{ $t('saasLanding.feature_desc3') }}
+                        Ispolink is novel cross-chain platform for hiring developers powered by Binance Smart Chain and
+                        Polygon’s layer 2 technology, we use blockchain for searching leading talents with internal AI-powered
+                        algorithms. Our interoperable blockchain ecosystem enable scalable decentralized payments and multiple
+                        in-platform token utilities which have been designed to tap in on the huge talent pool within the
+                        blockchain space.
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
@@ -184,7 +189,15 @@
                   <div class="tab-content">
                     <section>
                       <h6 class="text-center use-text-subtitle2">
-                        {{ $t('saasLanding.feature_desc3') }}
+                        <p>
+                          BlockBank is powered by our platform's utility token called BANK. Users are able to gain access to our
+                          credit card rewards program, use our advanced AI assistant, increase their APY % and earn interest on
+                          their tokens by staking BANK in their non-custodial BlockBank cryptocurrency wallet.
+                        </p>
+                        <p>
+                          By employing state-of-the-art technological solutions, our multi-purpose platform offers our users a
+                          convenient digital banking experience bridging the gap between CeFi and DeFi.
+                        </p>
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
@@ -198,7 +211,11 @@
                   <div class="tab-content">
                     <section>
                       <h6 class="text-center use-text-subtitle2">
-                        {{ $t('saasLanding.feature_desc3') }}
+                        <p>
+                          Charli3 is the first decentralized oracle being built on Cardano. This allows Charli3 to have all the
+                          benefits of existing successful oracle protocols, while having the flexibility of a much more agile
+                          blockchain backbone.
+                        </p>
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
@@ -209,7 +226,7 @@
                   </div>
                 </v-tab-item>
               </v-tabs>
-              <parallax-large />
+              <!-- <parallax-large /> -->
             </v-col>
           </v-row>
         </div>

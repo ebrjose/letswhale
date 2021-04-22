@@ -20,12 +20,12 @@ export default {
   data() {
     return {
       logos: [
-        '/images/logos/architect.png',
-        '/images/logos/cloud.png',
-        '/images/logos/coin.png',
-        '/images/logos/mobile.png',
-        '/images/logos/profile.png',
-        '/images/logos/saas.png'
+        '/images/logos2/paid2.png',
+        '/images/logos2/polkastarter2.jpg',
+        '/images/logos2/cardstarter.png',
+        '/images/logos2/duckdao2.png',
+        '/images/logos2/bscpad2.png',
+        '/images/logos2/trustswap.jpg'
       ]
     }
   }

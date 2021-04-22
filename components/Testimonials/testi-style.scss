@@ -1,13 +1,17 @@
 .root {
   position: relative;
   @include breakpoints-up(sm) {
-    padding-bottom: $spacing8
+    padding-bottom: $spacing8;
   }
   @include breakpoints-down(sm) {
-    background: linear-gradient(-45deg, $palette-primary-main 20%, $palette-primary-dark 70%);
+    background: linear-gradient(
+      -45deg,
+      $palette-primary-main 20%,
+      $palette-primary-dark 70%
+    );
   }
   @include breakpoints-down(xs) {
-    padding-bottom: $spacing10
+    padding-bottom: $spacing10;
   }
 }
 
@@ -22,13 +26,13 @@
   height: 600px;
   @include left(-160px);
   @include breakpoints-down(md) {
-    @include left(-320px)
+    @include left(-320px);
   }
   svg {
     fill: $palette-primary-main;
     transform: scale(1.2);
     width: 100%;
-    height: 100%
+    height: 100%;
   }
 }
 
@@ -38,12 +42,12 @@
   padding-top: $spacing7;
   color: $palette-common-white;
   strong {
-    font-weight: $font-bold
+    font-weight: $font-bold;
   }
 }
 
 .sliderWrap {
-  position: relative
+  position: relative;
 }
 
 .v-icon.icon {
@@ -51,33 +55,38 @@
   position: absolute;
   color: $palette-common-white;
   opacity: 0.15;
-  top: 200px;
+  top: 100px;
   @include breakpoints-up(sm) {
-    @include left(240px)
+    @include left(540px);
+  }
+
+  @include breakpoints-up(lg) {
+    top: 50px;
+    @include left(440px);
   }
 }
 
 .carousel {
   @include breakpoints-up(lg) {
-    margin: spacing(0, 2)
+    margin: spacing(0, 2);
   }
   .slick-active {
     p {
       opacity: 1;
       transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-      transform: translate3d(0, 0, 0)
+      transform: translate3d(0, 0, 0);
     }
   }
 }
 
 .item {
-  position: relative
+  position: relative;
 }
 
 .inner {
   color: $palette-common-white;
   .v-application--is-rtl & {
-    direction: rtl
+    direction: rtl;
   }
   @include breakpoints-up(sm) {
     display: flex;
@@ -86,12 +95,14 @@
     opacity: 0;
     flex: 1;
     transform: translate3d(-10%, 0, 0);
-    margin-top: $spacing5;
-    @include breakpoints-up(lg) {
-      margin-top: $spacing10
-    }
+    // margin-top: $spacing5;
+
+    // @include breakpoints-up(lg) {
+    //   margin-top: $spacing10;
+    // }
+
     @include breakpoints-up(sm) {
-      width: 100%
+      width: 100%;
     }
     @include breakpoints-down(xs) {
       text-align: center;
@@ -99,7 +110,7 @@
       -webkit-box-orient: vertical;
       height: 75px;
       overflow: hidden;
-      text-overflow: ellipsis
+      text-overflow: ellipsis;
     }
   }
 }
@@ -108,7 +119,7 @@
   text-align: center;
   padding: $spacing3;
   @include breakpoints-up(lg) {
-    padding: spacing(2, 3)
+    padding: spacing(2, 3);
   }
 }
 
@@ -116,7 +127,7 @@
   width: 85px !important;
   height: 85px !important;
   margin: 0 auto;
-  margin-bottom: $spacing3
+  margin-bottom: $spacing3;
 }
 
 .name {
@@ -125,7 +136,7 @@
   span {
     margin-top: 4px;
     font-size: 14px;
-    display: block
+    display: block;
   }
 }
 
@@ -153,7 +164,7 @@
     }
   }
   @include breakpoints-down(md) {
-    padding: $spacing2
+    padding: $spacing2;
   }
   img {
     transition: all 0.3s ease-out;
@@ -161,9 +172,10 @@
     width: 100%;
     filter: grayscale(1) contrast(0.5) brightness(1.5);
   }
-  .active, &:hover {
+  .active,
+  &:hover {
     img {
-      filter: none
+      filter: none;
     }
   }
 }

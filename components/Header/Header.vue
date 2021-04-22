@@ -99,7 +99,7 @@
                     :href="link.saas.contact"
                     text
                   >
-                    {{ $t('saasLanding.header_contact') }}
+                    {{ $t('saasLanding.header_get_started') }}
                   </v-btn>
                 </li>
               </scrollactive>

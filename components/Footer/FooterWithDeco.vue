@@ -13,7 +13,7 @@
         {{ $t('saasLanding.footer_waiting') }}
       </h4>
       <v-btn color="secondary" large>
-        {{ $t('saasLanding.getstarted') }}
+        {{ $t('saasLanding.banner_btn_getstarted') }}
       </v-btn>
     </div>
     <footer-main />
