@@ -12,12 +12,14 @@
         <section :class="!isMobile && 'space-top-short'">
           <headline />
         </section>
+
         <section id="feature" :class="isMobile ? 'space-top-short' : 'space-top'">
           <feature />
         </section>
         <section id="testimonials" class="space-bottom-testi">
           <testimonials />
         </section>
+
       </div>
       <section id="footer">
         <footer-with-deco />

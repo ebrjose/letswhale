@@ -1,6 +1,9 @@
 <template>
   <div class="counter-wrap">
     <v-container>
+      <div class="text-center" style="font-size: 19.2px">
+          To get whitelisted in projects like AIOZ or Cardstarter was really imposible for an average investor. As an example PAID NETWORK guarantees an allocation in the new projects being launched on their platform if you own 75 000 of the PAID token. That could mean half a million dollars just to be allowed an allocation in the IDO's. With this site we want to make it possible for the average person that don't have that kind of money to spend to also be able to enter the premarket allocation. We have space for 700 people with a minimum deposit of 1000USD. With that money we will enter the biggest launchpads with the best new projects and distribute the earnings to all holders/investors, according to the percentage of the initial deposits.
+      </div>
       <v-row
         justify="center"
         align="center"
