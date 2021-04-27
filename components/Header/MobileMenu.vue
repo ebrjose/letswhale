@@ -21,31 +21,6 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item
-          :href="link.saas.contact"
-          :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
-          link
-        >
-          <v-list-item-content>
-            <v-list-item-title class="menu-list">
-              {{ $t('saasLanding.header_contact') }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider class="divider-sidebar" />
-        <v-list-item
-          v-for="item in ['login', 'register']"
-          :key="item"
-          :href="link.saas[item]"
-          :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
-          link
-        >
-          <v-list-item-content>
-            <v-list-item-title class="menu-list">
-              {{ $t('saasLanding.header_'+item) }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
       </v-list>
     </div>
   </div>
@@ -56,15 +31,15 @@
 </style>
 
 <script>
-import navMenu from './menu'
-import link from '~/static/text/link'
+import navMenu from './menu';
+import link from '~/static/text/link';
 
 export default {
   data() {
     return {
       link: link,
       navMenu: navMenu
-    }
+    };
   },
   props: {
     open: {
@@ -72,5 +47,5 @@ export default {
       default: false
     }
   }
-}
+};
 </script>

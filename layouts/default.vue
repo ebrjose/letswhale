@@ -27,6 +27,7 @@ export default {
       play: false
     }
   },
+
   mounted: function() {
     // Preloader and Progress bar setup
     this.show = true

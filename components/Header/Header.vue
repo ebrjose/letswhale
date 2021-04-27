@@ -44,9 +44,9 @@
                   :src="logo"
                   alt="logo"
                 >
-                <span v-if="!isMobile">
+                <!-- <span v-if="!isMobile">
                   {{ brand.saas.name }}
-                </span>
+                </span> -->
               </nuxt-link>
               <scrollactive
                 v-if="!invert && loaded"
@@ -60,9 +60,9 @@
                     :src="logo"
                     alt="logo"
                   >
-                  <span v-if="!isMobile">
+                  <!-- <span v-if="!isMobile">
                     {{ brand.saas.name }}
-                  </span>
+                  </span> -->
                 </a>
               </scrollactive>
             </div>
@@ -94,14 +94,6 @@
                     {{ $t('saasLanding.header_'+item.name) }}
                   </v-btn>
                 </li>
-                <li>
-                  <v-btn
-                    :href="link.saas.contact"
-                    text
-                  >
-                    {{ $t('saasLanding.header_get_started') }}
-                  </v-btn>
-                </li>
               </scrollactive>
             </div>
           </nav>
@@ -109,15 +101,9 @@
             :class="{ invert: invert }"
             class="nav-menu"
           >
+            <metamask />
             <hidden point="xsDown">
-              <v-btn :href="link.saas.login" class="text-btn" text>
-                {{ $t('saasLanding.header_login') }}
-              </v-btn>
-              <v-btn :href="link.saas.register" color="secondary" class="button">
-                {{ $t('saasLanding.header_register') }}
-              </v-btn>
             </hidden>
-            <setting-menu :invert="invert" />
           </nav>
         </div>
       </v-container>
@@ -130,13 +116,13 @@
 </style>
 
 <script>
-import logo from '~/static/images/saas-logo.svg'
+import logo from '~/static/images/letsWhale.png'
 import link from '~/static/text/link'
 import brand from '~/static/text/brand'
 import Hidden from '../Hidden'
 import navMenu from './menu'
-import Settings from './Settings'
 import MobileMenu from './MobileMenu'
+import Metamask from '~/components/Metamask'
 
 let counter = 0
 function createData(name, url, offset) {
@@ -151,9 +137,9 @@ function createData(name, url, offset) {
 
 export default {
   components: {
-    'setting-menu': Settings,
     Hidden,
-    MobileMenu
+    MobileMenu,
+    Metamask
   },
   props: {
     invert: {

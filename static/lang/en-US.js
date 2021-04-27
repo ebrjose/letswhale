@@ -51,7 +51,7 @@ export default () => {
       },
       saasLanding: {
         header_login: 'log in',
-        header_register: 'register',
+        connect_wallet: 'Connect wallet',
         header_language: 'language',
         header_theme: 'Theme mode',
         header_dark: 'dark',
