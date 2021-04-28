@@ -179,7 +179,7 @@
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
-                          <img :src="imgAPI.saas[4]" alt="screen" />
+                          <img src="/images/nextcoins/ipsolink_web.jpg" alt="screen" />
                         </figure>
                       </div>
                     </section>
@@ -201,7 +201,7 @@
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
-                          <img :src="imgAPI.saas[5]" alt="screen" />
+                          <img src="/images/nextcoins/blockbank_web.jpg" alt="screen" />
                         </figure>
                       </div>
                     </section>
@@ -219,7 +219,7 @@
                       </h6>
                       <div class="illustration-center">
                         <figure class="figure screen">
-                          <img :src="imgAPI.saas[6]" alt="screen" />
+                          <img src="/images/nextcoins/charli3_web.jpg" alt="screen" />
                         </figure>
                       </div>
                     </section>

@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="illustration">
-          <img :src="imgAPI.saas[7]" alt="illustration" />
+          <canvas id="canvas"></canvas>
         </div>
       </div>
     </v-container>
@@ -80,17 +80,13 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import './banner-style.scss';
-</style>
-
 <script>
 import youtube from '~/youtube'
 import imgAPI from '~/static/images/imgAPI'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
-
+import ImageParticles from '~/assets/libs/imageparticles'
+import getBase64Image from '~/plugins/getBase64Image'
 export default {
   components: {
     Hidden
@@ -135,6 +131,23 @@ export default {
       const lgUp = this.$store.state.breakpoints.lgUp
       return lgUp.indexOf(this.$mq) > -1
     }
+  },
+  mounted() {
+    const image = new Image()
+    image.src = '/images/ballena_final.png'
+    console.log('mounted -> image', image)
+    const imageData = getBase64Image(image)
+    console.log('mounted -> imageData', imageData)
+    ImageParticles.initialize('canvas', imageData, 10, 28, 1, 2, 10)
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import './banner-style.scss';
+.illustration {
+  canvas {
+    width: 100%;
+  }
+}
+</style>

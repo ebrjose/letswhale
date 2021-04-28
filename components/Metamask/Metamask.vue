@@ -36,8 +36,6 @@ export default {
       if (metamaskAccount && chainId === 56) {
         this.$store.commit('metamask/SET_ACCOUNT', metamaskAccount)
         this.$store.commit('metamask/SET_CHAINID', chainId)
-      } else {
-        this.connectWallet()
       }
     }
   },

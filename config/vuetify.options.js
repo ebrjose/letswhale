@@ -1,25 +1,24 @@
 import colors from 'vuetify/lib/util/colors'
 
 let darkMode = false
-if (typeof Storage !== 'undefined') { // eslint-disable-line
+if (typeof Storage !== 'undefined') {
+  // eslint-disable-line
   darkMode = localStorage.getItem('luxiDarkMode') || false
 }
 
 const palette = {
   violeta: {
-    primary: colors.purple.base, // primary main
-    primarylight: colors.purple.lighten4, // primary light
-    primarydark: colors.purple.darken3, // primary dark
-    secondary: colors.lightGreen.base, // secondary main
-    secondarylight: colors.lightGreen.lighten4, // secondary light
-    secondarydark: colors.lightGreen.darken3, // secondary dark
-    anchor: colors.purple.base // link
+    primary: colors.deepPurple.base, // primary main
+    primarylight: colors.deepPurple.lighten4, // primary light
+    primarydark: colors.deepPurple.darken4, // primary dark
+    secondary: colors.cyan.base, // secondary main
+    secondarylight: colors.cyan.lighten4, // secondary light
+    secondarydark: colors.cyan.darken4, // secondary dark
+    anchor: colors.deepPurple.base // link
   }
 }
 
-export const theme = {
-  ...palette.violeta
-}
+export const theme = { ...palette.violeta }
 
 export default {
   rtl: false,
