@@ -61,7 +61,7 @@ export default () => {
         header_plan: 'plan',
         header_earning: 'earning',
         header_get_started: 'Get Started',
-        banner_title: 'Assure your location in',
+        banner_title: 'Assure your allocation in',
         banner_titlestrong: 'Next Launchpads',
         banner_subtitle:
           'Are you tired to postulate in whitelists of new ICOs and get nothing?',

@@ -1,4 +1,4 @@
-const CHAINID = 56
+import { CHAINID, ETHEREUM_CHAIN } from './constants'
 
 export const state = () => ({
   account: null,
@@ -41,7 +41,9 @@ export const actions = {
       if (parseInt(ethereum.chainId, 16) === CHAINID) {
         dispatch('getAccount')
       } else {
-        alert('Binance Smart Chain error')
+        // console.log(ETHEREUM_CHAIN)
+        dispatch('changeEthereumChain')
+        // alert('Binance Smart Chain error')
       }
     } else {
       console.log('Metamask is not installed')
@@ -54,5 +56,16 @@ export const actions = {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
     const account = accounts[0]
     commit('SET_ACCOUNT', account)
+  },
+  changeEthereumChain({ dispatch }) {
+    ethereum
+      .request({
+        method: 'wallet_addEthereumChain',
+        params: [ETHEREUM_CHAIN[CHAINID]]
+      })
+      .then(() => {
+        dispatch('getAccount')
+      })
+      .catch(error => console.log(error))
   }
 }

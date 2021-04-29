@@ -62,11 +62,11 @@ const ImageParticles = {
     this.reactionSensitivity = reactionSensitivityPara
     this.lineThickness = lineThicknessPara
 
-    window.onresize = function(event) {
-      ImageParticles.canvas.width = window.innerWidth
-      ImageParticles.canvas.height = window.innerHeight
-      ImageParticles.onWindowResize()
-    }
+    // window.onresize = function(event) {
+    //   ImageParticles.canvas.width = window.innerWidth
+    //   ImageParticles.canvas.height = window.innerHeight
+    //   ImageParticles.onWindowResize()
+    // }
 
     // Load initial input image
     this.getImageData(imageData)

@@ -27,15 +27,15 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { CHAINID } from '~/store/constants'
+
 export default {
   created() {
-    // Metamask
     if (process.browser) {
       const metamaskAccount = localStorage.getItem('account')
       const chainId = localStorage.getItem('chainId')
-      if (metamaskAccount && chainId === 56) {
-        this.$store.commit('metamask/SET_ACCOUNT', metamaskAccount)
-        this.$store.commit('metamask/SET_CHAINID', chainId)
+      if (metamaskAccount && chainId == CHAINID) {
+        this.connectWallet()
       }
     }
   },

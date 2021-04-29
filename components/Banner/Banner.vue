@@ -32,43 +32,42 @@
         <use xlink:href="/images/saas/deco-bg-right.svg#main" />
       </svg>
     </div>
-    <v-container :class="{ fixed: isDesktop }">
-      <div class="slider-wrap">
-        <div class="text">
-          <h3 class="use-text-title">
-            {{ $t('saasLanding.banner_title') }}
-            <strong>
-              {{ $t('saasLanding.banner_titlestrong') }}
-            </strong>
-          </h3>
-          <p class="use-text-subtitle">
-            {{ $t('saasLanding.banner_subtitle') }}
-          </p>
-          <div class="btn-area">
-            <v-btn
-              text
-              class="play-btn"
-              @click="handleVideoOpen()"
-            >
-              <span class="icon">
-                <i class="ion-ios-play-outline" />
-              </span>
-              {{ $t('saasLanding.banner_btn_nexticos') }}
-            </v-btn>
-            <v-btn
-              :href="link.saas.login"
-              color="secondary"
-              large
-            >
-              {{ $t('saasLanding.banner_btn_getstarted') }}
-            </v-btn>
+    <v-container :class="{ fixed: isDesktop, 'container-wrap':true }">
+      <v-row>
+        <v-col cols="12" md="6">
+          <div class="text">
+            <h3 class="use-text-title">
+              {{ $t('saasLanding.banner_title') }}
+              <strong>
+                {{ $t('saasLanding.banner_titlestrong') }}
+              </strong>
+            </h3>
+            <p class="use-text-subtitle">
+              {{ $t('saasLanding.banner_subtitle') }}
+            </p>
+            <div class="btn-area">
+              <v-btn
+                text
+                class="play-btn"
+                @click="handleVideoOpen()"
+              >
+                <span class="icon">
+                  <i class="ion-ios-play-outline" />
+                </span>
+                {{ $t('saasLanding.banner_btn_nexticos') }}
+              </v-btn>
+              <Transaction />
+            </div>
           </div>
-        </div>
-        <div class="illustration">
-          <canvas id="canvas"></canvas>
-        </div>
-      </div>
+        </v-col>
+        <v-col cols="12" md="6">
+          <div class="illustration">
+            <Rocket />
+          </div>
+        </v-col>
+      </v-row>
     </v-container>
+
     <div class="deco">
       <hidden point="mdDown">
         <div :class="{ hide: hide }" class="deco-inner">
@@ -85,11 +84,13 @@ import youtube from '~/youtube'
 import imgAPI from '~/static/images/imgAPI'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
-import ImageParticles from '~/assets/libs/imageparticles'
-import getBase64Image from '~/plugins/getBase64Image'
+import Rocket from '~/components/Rocket'
+import Transaction from '~/components/Transaction'
 export default {
   components: {
-    Hidden
+    Hidden,
+    Rocket,
+    Transaction
   },
   data() {
     return {
@@ -131,23 +132,10 @@ export default {
       const lgUp = this.$store.state.breakpoints.lgUp
       return lgUp.indexOf(this.$mq) > -1
     }
-  },
-  mounted() {
-    const image = new Image()
-    image.src = '/images/ballena_final.png'
-    console.log('mounted -> image', image)
-    const imageData = getBase64Image(image)
-    console.log('mounted -> imageData', imageData)
-    ImageParticles.initialize('canvas', imageData, 10, 28, 1, 2, 10)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import './banner-style.scss';
-.illustration {
-  canvas {
-    width: 100%;
-  }
-}
 </style>
