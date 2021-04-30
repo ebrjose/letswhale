@@ -39,7 +39,7 @@ $palette-secondary-light: var(--v-secondarylight-base);
 $palette-secondary-dark: var(--v-secondarydark-base);
 
 // Common color palette
-$palette-common-white: #FFF;
+$palette-common-white: #fff;
 $palette-common-black: #000;
 
 // Light color palette
@@ -68,3 +68,6 @@ $dark-background-default: #303030;
 $rounded-small: 8px;
 $rounded-medium: 12px;
 $rounded-big: 20px;
+
+// Dialog
+$dialog-border-radius: 20%;

@@ -2,7 +2,7 @@ import { CHAINID, ETHEREUM_CHAIN } from './constants'
 
 export const state = () => ({
   account: null,
-  chainId: null
+  chainId: null,
 })
 
 export const getters = {
@@ -14,7 +14,7 @@ export const getters = {
   },
   loggedIn(state) {
     return !!state.account
-  }
+  },
 }
 
 export const mutations = {
@@ -32,7 +32,7 @@ export const mutations = {
     state.chainId = null
     localStorage.removeItem('account')
     localStorage.removeItem('chainId')
-  }
+  },
 }
 
 export const actions = {
@@ -61,11 +61,15 @@ export const actions = {
     ethereum
       .request({
         method: 'wallet_addEthereumChain',
-        params: [ETHEREUM_CHAIN[CHAINID]]
+        params: [ETHEREUM_CHAIN[CHAINID]],
       })
       .then(() => {
         dispatch('getAccount')
       })
       .catch(error => console.log(error))
-  }
+  },
+  getWalletBalance({ state }) {
+    const account = state.account
+    return ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] })
+  },
 }
