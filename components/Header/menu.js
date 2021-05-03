@@ -1,3 +1,3 @@
-const menu = ['launchpads', 'capital', 'plan', 'earning']
+const menu = ['earnings', 'plan', 'last', 'next']
 
 export default menu

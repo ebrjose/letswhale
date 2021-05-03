@@ -13,10 +13,10 @@
           <headline />
         </section>
 
-        <section id="feature" :class="isMobile ? 'space-top-short' : 'space-top'">
+        <section id="earnings" :class="isMobile ? 'space-top-short' : 'space-top'">
           <feature />
         </section>
-        <section id="testimonials" class="space-bottom-testi">
+        <section id="last" class="space-bottom-testi">
           <testimonials />
         </section>
 
@@ -58,23 +58,21 @@ export default {
     Testimonials,
     FooterWithDeco,
     PageNav,
-    Hidden
+    Hidden,
   },
   computed: {
     isTablet() {
-      return (
-        this.$mq === 'mdDown' || this.$mq === 'smDown' || this.$mq === 'xsDown'
-      ) // eslint-disable-line
+      return this.$mq === 'mdDown' || this.$mq === 'smDown' || this.$mq === 'xsDown' // eslint-disable-line
     },
     isMobile() {
       return this.$mq === 'smDown' || this.$mq === 'xsDown'
-    }
+    },
   },
   head() {
     return {
-      title: brand.saas.name + ' - Home Page'
+      title: brand.saas.name + ' - Home Page',
     }
-  }
+  },
 }
 </script>
 

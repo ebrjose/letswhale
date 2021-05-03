@@ -1,6 +1,8 @@
 <template>
   <v-container class="fixed-width">
+
     <div class="root">
+      <h4 class="logo-title">Support</h4>
       <img
         v-for="(logo, index) in logos"
         :key="index"
@@ -25,9 +27,9 @@ export default {
         '/images/logos2/cardstarter.png',
         '/images/logos2/duckdao2.png',
         '/images/logos2/bscpad2.png',
-        '/images/logos2/trustswap.jpg'
-      ]
+        '/images/logos2/trustswap.jpg',
+      ],
     }
-  }
+  },
 }
 </script>

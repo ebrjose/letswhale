@@ -6,20 +6,19 @@ export default () => {
         subtitle: "It's a blank-page. Start to build your'e page from here.",
         error_with_status: 'An error occurred on server',
         '404': 'This page could not be found.',
-        '404_subtitle':
-          'You can either stay and chill here, or go back to the beginning.',
+        '404_subtitle': 'You can either stay and chill here, or go back to the beginning.',
         back: 'back to home',
         error_without_status: 'An error occurred on the server',
         contact_title: 'Free Project Quote',
-        contact_title2: 'Say Hello to Us',
-        contact_subtitle:
-          'Do you have any questions? Are you ready to reduce cost and create new revenue? Or you simply want to say hi? Drop us a message.',
+        contact_title2: 'INVESTMENT',
+        contact_subtitle: `This material has not been prepared in accordance with legal requirements designed to promote the independence of investment research, and that it is not subject to any prohibition on dealing ahead of the dissemination of investment research.
+Past performance is not an indication of, nor an assurance of future performance of any system or method as markets can change. No assurance can be given that any system or method will continue to perform similarly in the future. If you have any doubts about crypto-investings or method offered here you should first consult your own financial advisor.`,
         form_name: 'What is your name? *',
         form_email: 'What it your email? *',
         form_phone: 'What is your phone number?',
         form_company: 'What is your company?',
         form_message: 'Write your message here',
-        form_terms: 'I have read and accept the Terms of',
+        form_terms: 'I have read the disclaimer',
         form_privacy: 'Service & Privacy Policy *',
         form_send: 'Send Message',
         login: 'login',
@@ -47,7 +46,7 @@ export default () => {
         zh: '简体中文',
         pt: '󠁥󠁮󠁧󠁿Português',
         id: '󠁥󠁮󠁧󠁿Bahasa Indonesia',
-        ar: '󠁥󠁮󠁧󠁿العربيّة'
+        ar: '󠁥󠁮󠁧󠁿العربيّة',
       },
       saasLanding: {
         header_login: 'log in',
@@ -56,15 +55,15 @@ export default () => {
         header_theme: 'Theme mode',
         header_dark: 'dark',
         header_light: 'light',
-        header_launchpads: 'launchpads',
-        header_capital: 'capital',
+        header_earnings: 'earnings',
         header_plan: 'plan',
-        header_earning: 'earning',
+        header_last: 'last',
+        header_next: 'next',
+        header_deposit: 'deposit',
         header_get_started: 'Get Started',
         banner_title: 'Assure your allocation in',
         banner_titlestrong: 'Next Launchpads',
-        banner_subtitle:
-          'Are you tired to postulate in whitelists of new ICOs and get nothing?',
+        banner_subtitle: 'Are you tired to postulate in whitelists of new ICOs and get nothing?',
         banner_btn_nexticos: 'Next ICOs',
         banner_btn_getstarted: 'GET STARTED',
         counter_month: 'Month',
@@ -85,15 +84,13 @@ export default () => {
         testi_title: 'LAST SUCCESSFUL ',
         testi_titlestrong: 'LAUNCHPADS',
         pricing_title: 'Pricing & Plan',
-        pricing_subtitle:
-          'The best value designed for your workplace, starting at just $24/user/month.',
-        faq_subtitle:
-          'Have a question? Check out our frequently asked questions to find your answer.',
+        pricing_subtitle: 'The best value designed for your workplace, starting at just $24/user/month.',
+        faq_subtitle: 'Have a question? Check out our frequently asked questions to find your answer.',
         caption_news: 'news',
         caption_event: 'event',
         news_readmore: 'read more',
-        footer_waiting: 'What are you waiting for?'
-      }
+        footer_waiting: 'What are you waiting for?',
+      },
     })
   })
 }

@@ -287,4 +287,8 @@ module.exports = {
   server: {
     port: 8008, // default: 3000
   },
+  /**
+   * API
+   */
+  serverMiddleware: [{ path: '/api', handler: '~/server/index.js' }],
 }

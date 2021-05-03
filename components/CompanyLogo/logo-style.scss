@@ -4,7 +4,17 @@
     justify-content: center;
   }
   @include breakpoints-down(xs) {
-    overflow-x: auto
+    overflow-x: auto;
+  }
+  .logo-title {
+    color: #000;
+    font-size: 2rem;
+    // align-items: center;
+    color: var(--v-primary-base);
+    border-right: 2px solid #ccc;
+    padding-right: 32px;
+    margin: 32px;
+    line-height: 64px;
   }
   img {
     height: 64px;
@@ -12,7 +22,7 @@
     filter: grayscale(1) contrast(0.5) brightness(1.5);
     transition: all 0.3s ease-out;
     &:hover {
-      filter: none
+      filter: none;
     }
   }
 }

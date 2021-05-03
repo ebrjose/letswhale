@@ -62,51 +62,22 @@
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
                     v-model="name"
-                    :rules="nameRules"
-                    :label="$t('common.form_name')"
+                    label="Total Balance"
                     color="white"
                     class="input light"
                     filled
-                    required
+                    suffix="BNB"
                   />
                 </v-col>
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
                     v-model="email"
-                    :rules="emailRules"
-                    :label="$t('common.form_email')"
+                    label="Investment Amount"
                     class="input light"
                     color="white"
                     filled
                     required
-                  />
-                </v-col>
-                <v-col cols="12" sm="6" class="px-6">
-                  <v-text-field
-                    v-model="phone"
-                    :label="$t('common.form_phone')"
-                    color="white"
-                    class="input light"
-                    filled
-                  />
-                </v-col>
-                <v-col cols="12" sm="6" class="px-6">
-                  <v-text-field
-                    v-model="company"
-                    :label="$t('common.form_company')"
-                    color="white"
-                    class="input light"
-                    filled
-                  />
-                </v-col>
-                <v-col cols="12" class="px-6">
-                  <v-textarea
-                    v-model="message"
-                    rows="6"
-                    color="white"
-                    class="input light"
-                    filled
-                    :label="$t('common.form_message')"
+                    suffix="BNB"
                   />
                 </v-col>
               </v-row>
@@ -120,11 +91,7 @@
                     class="white-label"
                     required
                   />
-                  <span>
-                    <a href="#" class="link">
-                      {{ $t('common.form_privacy') }}
-                    </a>
-                  </span>
+
                 </div>
                 <v-btn
                   :block="isMobile"
@@ -132,7 +99,7 @@
                   @click="validate"
                   large
                 >
-                  {{ $t('common.form_send') }}
+                  MAKE A DEPOSIT
                 </v-btn>
               </div>
             </v-form>
@@ -156,7 +123,7 @@ import Hidden from '../Hidden'
 
 export default {
   components: {
-    Hidden
+    Hidden,
   },
   data() {
     return {
@@ -165,17 +132,14 @@ export default {
       name: '',
       nameRules: [v => !!v || 'Name is required'],
       email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
-      ],
+      emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
       phone: '',
       company: '',
       message: '',
       checkbox: false,
       logo: logo,
       brand: brand,
-      routeLink: link
+      routeLink: link,
     }
   },
   methods: {
@@ -183,13 +147,13 @@ export default {
       if (this.$refs.form.validate()) {
         this.snackbar = true
       }
-    }
+    },
   },
   computed: {
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
-    }
-  }
+    },
+  },
 }
 </script>

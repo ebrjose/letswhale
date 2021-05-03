@@ -6,7 +6,7 @@
       persistent
     >
       <v-card>
-        <v-toolbar color="secondary" dark > Opening from the top </v-toolbar>
+        <v-toolbar color="secondary" dark > Deposit the Funds </v-toolbar>
         <v-card-title class="headline">
           Balance: {{ balanceDecimal }} BNB
         </v-card-title>

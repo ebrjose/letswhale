@@ -4,11 +4,7 @@
     padding-bottom: $spacing8;
   }
   @include breakpoints-down(sm) {
-    background: linear-gradient(
-      -45deg,
-      $palette-primary-main 20%,
-      $palette-primary-dark 70%
-    );
+    background: linear-gradient(-45deg, $palette-primary-main 20%, $palette-primary-dark 70%);
   }
   @include breakpoints-down(xs) {
     padding-bottom: $spacing10;
@@ -133,10 +129,11 @@
 .name {
   font-size: 18px;
   font-weight: $font-medium;
-  span {
+  .roi {
     margin-top: 4px;
-    font-size: 14px;
+    font-size: 30px;
     display: block;
+    font-weight: bold;
   }
 }
 

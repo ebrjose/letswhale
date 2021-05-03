@@ -94,6 +94,9 @@
                     {{ $t('saasLanding.header_'+item.name) }}
                   </v-btn>
                 </li>
+                <li>
+                  <v-btn text > {{ $t('saasLanding.header_deposit') }} </v-btn>
+                </li>
               </scrollactive>
             </div>
           </nav>
@@ -116,7 +119,7 @@
 </style>
 
 <script>
-import logo from '~/static/images/letsWhale.png'
+import logo from '~/static/images/ballena.png'
 import link from '~/static/text/link'
 import brand from '~/static/text/brand'
 import Hidden from '../Hidden'
@@ -131,7 +134,7 @@ function createData(name, url, offset) {
     id: counter,
     name,
     url,
-    offset
+    offset,
   }
 }
 
@@ -139,13 +142,13 @@ export default {
   components: {
     Hidden,
     MobileMenu,
-    Metamask
+    Metamask,
   },
   props: {
     invert: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -161,8 +164,8 @@ export default {
         createData(navMenu[0], '#' + navMenu[0]),
         createData(navMenu[1], '#' + navMenu[1]),
         createData(navMenu[2], '#' + navMenu[2]),
-        createData(navMenu[3], '#' + navMenu[3], -40)
-      ]
+        createData(navMenu[3], '#' + navMenu[3], -40),
+      ],
     }
   },
   mounted() {
@@ -176,11 +179,12 @@ export default {
       return (this.fixed = false)
     },
     setOffset: function(offset) {
+      console.log('offset', offset)
       this.navOffset = offset
     },
     handleToggleOpen: function() {
       this.openDrawer = !this.openDrawer
-    }
+    },
   },
   computed: {
     isMobile() {
@@ -190,7 +194,7 @@ export default {
     isDesktop() {
       const lgUp = this.$store.state.breakpoints.lgUp
       return lgUp.indexOf(this.$mq) > -1
-    }
-  }
+    },
+  },
 }
 </script>

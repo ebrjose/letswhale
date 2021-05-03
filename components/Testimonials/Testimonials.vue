@@ -47,7 +47,7 @@
                     </v-avatar>
                     <h6 class="name">
                       {{ item.name }}
-                      <span>
+                      <span class="roi">
                         {{ item.title }}
                       </span>
                     </h6>
@@ -107,111 +107,111 @@ const palette = {
     secondary: colors.lightGreen.base, // secondary main
     secondarylight: colors.lightGreen.lighten4, // secondary light
     secondarydark: colors.lightGreen.darken3, // secondary dark
-    anchor: colors.purple.base // link
-  }
+    anchor: colors.purple.base, // link
+  },
 }
 
 const theme = {
-  ...palette.violeta
+  ...palette.violeta,
 }
 
 const testiData = [
   {
     avatar: '/images/logos3/logo_aioz.png',
     name: 'AIOZ Network',
-    title: 'AIOZ',
+    title: '184x',
     logo: '/images/logos3/logo_aioz.png',
     text: [
       `AIOZ Network IDO was offered at 0.015$us on April 1st and went up to 2.65$us on April 3rd, doing a 176x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred and seventy-five thousand dollars, after 48 hours. `,
-      `AIOZ Network is a company that offers reliable CDN to web developers based in the blockchain to make it more reliable, efficient and low cost.`
-    ]
+      `AIOZ Network is a company that offers reliable CDN to web developers based in the blockchain to make it more reliable, efficient and low cost.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_cardstarter.png',
     name: 'Cardstarter',
-    title: 'CARDS',
+    title: '17x',
     logo: '/images/logos3/logo_cardstarter.png',
     text: [
       `Cardstarter ICO was offered at 0.15$us in Round 2 on March 25th and went up to 2.62$us on April 1st, doing a 17x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than sixteen thousand dollars, after 48 hours, but this coin is now above 20$us meaning a 133x to all the diamond hands. `,
-      `CardStarter is a decentralized accelerator and swapping platform, connecting early stage Cardano projects with investors.`
-    ]
+      `CardStarter is a decentralized accelerator and swapping platform, connecting early stage Cardano projects with investors.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_polkamon.jpg',
     name: 'Polkamon',
-    title: 'PMON',
+    title: '177x',
     logo: '/images/logos3/logo_polkamon.jpg',
     text: [
       `Polkamon ICO was offered at 0.35$us on March 1st and went up to 62.10$us on April 2nd, doing a 177x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred and seventy-six thousand dollars, after 48 hours. `,
-      `Polkamon is a NFT project and has beautifully animated digital collectibles to buy and sell.`
-    ]
+      `Polkamon is a NFT project and has beautifully animated digital collectibles to buy and sell.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_polkadomain.png',
     name: 'Polkadomain',
-    title: 'NAME',
+    title: '23x',
     logo: '/images/logos3/logo_polkadomain.png',
     text: [
       `PolkaDomain ICO was offered at 0.16$us on April 16th and went up to 3.78$us on April 18th, doing a 23x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than twenty-two thousand dollars, after 48 hours. `,
-      `Polkadomain help to connect a domain to your digital identity, using NFT technology to store a domain.`
-    ]
+      `Polkadomain help to connect a domain to your digital identity, using NFT technology to store a domain.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_yellow_road.png',
     name: 'Yellow Road',
-    title: 'ROAD',
+    title: '105x',
     logo: '/images/logos3/logo_yellow_road.png',
     text: [
       `Yellow Road ICO was offered at 0.2$us on April 10th and went up to 21.01$us on April 11th, doing a 105x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made hundred and four thousand dollars, after 24 hours. `,
-      `Yellow Road aims to achieve that through a platform dedicated to BSC project IDOs so they get backed by a community that trusts in them. It offers a range of funding solutions from smart auctions to community building and engagement programs for new projects.`
-    ]
+      `Yellow Road aims to achieve that through a platform dedicated to BSC project IDOs so they get backed by a community that trusts in them. It offers a range of funding solutions from smart auctions to community building and engagement programs for new projects.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_splyt.jpg',
     name: 'Splyt',
-    title: 'SHOPX',
+    title: '112x',
     logo: '/images/logos3/logo_splyt.jpg',
     text: [
       `Splyt ICO was offered at 0.042$us on March 31th and went up to 4.73$us on March 31th, doing a 112x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than hundred and eleven thousand dollars, in less than 24 hours.`,
-      `Splyt’s eNFT (E-commerce-Non-Fungible-Token) tokenizes off-chain products on the blockchain. This streamlines digital sales and enables lifetime product data tracking not previously possible. The eNFT empowers a transparent e-commerce ecosystem.`
-    ]
+      `Splyt’s eNFT (E-commerce-Non-Fungible-Token) tokenizes off-chain products on the blockchain. This streamlines digital sales and enables lifetime product data tracking not previously possible. The eNFT empowers a transparent e-commerce ecosystem.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_unmarshal.png',
     name: 'Unmarshal',
-    title: 'MARSH',
+    title: '49x',
     logo: '/images/logos3/logo_unmarshal.png',
     text: [
       `Unmarshal ICO was offered at 0.17$us on March 30th and went up to 8.34$us on March 31th, doing a 49x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made forty-eight thousand dollars, after 24 hours. `,
-      `Unmarshal is a Decentralized network of blockchain data indexers and transforming tools to power DeFi applications on any chain.`
-    ]
+      `Unmarshal is a Decentralized network of blockchain data indexers and transforming tools to power DeFi applications on any chain.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_blind_boxes.jpg',
     name: 'Blind Boxes',
-    title: 'BLES',
+    title: '66x',
     logo: '/images/logos3/logo_blind_boxes.jpg',
     text: [
       `Blind Boxes ICO was offered at 0.15$us on March 28th and went up to 9.93$us on March 28th, doing a 66x for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made sixty-five thousand dollars, in less than 24 hours. `,
-      `Blind Boxes offers collectors opportunities to discover new artists and own valuable limited-edition assets.`
-    ]
+      `Blind Boxes offers collectors opportunities to discover new artists and own valuable limited-edition assets.`,
+    ],
   },
   {
     avatar: '/images/logos3/logo_a2dao.jpg',
     name: 'A2DAO',
-    title: 'ATD',
+    title: '102x',
     logo: '/images/logos3/logo_a2dao.jpg',
     text: [
       `A2DAO ICO was offered at 0.1$us on March 18th and went up to 10.26$us in public sale on March 28th, doing a 102X for early investors. That means if you would have invested only 1000 dollars in that coin, you would have made more than one hundred thousand dollars, after 24 hours. `,
-      `A2DAO connects blockchain startups with smart money and helps cultivate community for each respective project.`
-    ]
-  }
+      `A2DAO connects blockchain startups with smart money and helps cultivate community for each respective project.`,
+    ],
+  },
 ]
 
 export default {
   components: {
     Hidden,
-    Slick: () => import('vue-slick')
+    Slick: () => import('vue-slick'),
   },
   data() {
     return {
@@ -223,23 +223,23 @@ export default {
         infinite: true,
         speed: 500,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 10000,
         slidesToShow: 1,
         fade: true,
         arrows: false,
-        pauseOnHover: false
-      }
+        pauseOnHover: true,
+      },
     }
   },
   mounted() {
     this.loaded = true
     this.$vuetify.theme.themes = {
       light: {
-        ...theme
+        ...theme,
       },
       dark: {
-        ...theme
-      }
+        ...theme,
+      },
     }
   },
   methods: {
@@ -248,7 +248,7 @@ export default {
     },
     gotoSlide(index) {
       this.$refs.slider.goTo(index)
-    }
+    },
   },
   computed: {
     isDesktop() {
@@ -258,7 +258,7 @@ export default {
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
-    }
-  }
+    },
+  },
 }
 </script>
