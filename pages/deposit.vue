@@ -1,21 +1,21 @@
 <template>
   <div>
-    <contact />
+    <deposit />
   </div>
 </template>
 
 <script>
-import Contact from '~/components/Forms/Contact'
+import Deposit from '~/components/Forms/Deposit'
 import brand from '~/static/text/brand'
 
 export default {
   components: {
-    Contact
+    Deposit,
   },
   head() {
     return {
-      title: brand.saas.name + ' - Contact'
+      title: brand.saas.name + ' - Deposit',
     }
-  }
+  },
 }
 </script>

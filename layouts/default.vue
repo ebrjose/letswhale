@@ -19,16 +19,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { CHAINID } from '~/store/constants'
+
 export default {
   loading: false,
   data() {
     return {
       show: false,
-      play: false
+      play: false,
     }
   },
-
-  mounted: function() {
+  created() {
+    if (process.browser) {
+      this.checkConection()
+      ethereum.on('chainChanged', chainId => {
+        this.setNetwork()
+      })
+    }
+  },
+  mounted() {
     // Preloader and Progress bar setup
     this.show = true
     this.play = true
@@ -46,6 +56,19 @@ export default {
     // RTL initial
     const rtlURL = document.location.pathname.split('/')[1] === 'ar'
     this.$vuetify.rtl = rtlURL
-  }
+  },
+  methods: {
+    ...mapActions('metamask', ['connectWallet', 'disconnectWallet', 'setNetwork']),
+    checkConection() {
+      this.setNetwork()
+      const metamaskAccount = localStorage.getItem('account')
+      const chainId = localStorage.getItem('chainId')
+      if (metamaskAccount && chainId == CHAINID) {
+        this.connectWallet()
+      } else {
+        this.disconnectWallet()
+      }
+    },
+  },
 }
 </script>

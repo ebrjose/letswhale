@@ -56,7 +56,13 @@
                 </span>
                 {{ $t('saasLanding.banner_btn_nexticos') }}
               </v-btn>
-              <Transaction />
+              <v-btn
+              to="/deposit"
+                color="secondary"
+                large
+              >
+                {{ $t('saasLanding.banner_btn_getstarted') }}
+              </v-btn>
             </div>
           </div>
         </v-col>
@@ -85,12 +91,10 @@ import imgAPI from '~/static/images/imgAPI'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
 import Rocket from '~/components/Rocket'
-import Transaction from '~/components/Transaction'
 export default {
   components: {
     Hidden,
     Rocket,
-    Transaction
   },
   data() {
     return {
@@ -106,9 +110,9 @@ export default {
         rel: 0,
         showinfo: 1,
         mute: 0,
-        origin: 'https://localhost:8008'
+        origin: 'https://localhost:8008',
       },
-      yt: youtube
+      yt: youtube,
     }
   },
   methods: {
@@ -125,14 +129,14 @@ export default {
     handleVideoClose() {
       this.dialog = false
       this.player.pauseVideo()
-    }
+    },
   },
   computed: {
     isDesktop() {
       const lgUp = this.$store.state.breakpoints.lgUp
       return lgUp.indexOf(this.$mq) > -1
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -2,7 +2,7 @@
 
 $flag: '/images/flag-logo.png';
 
-@mixin flag-icon{
+@mixin flag-icon {
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -16,19 +16,19 @@ $flag: '/images/flag-logo.png';
     background-position: 0 3px;
   }
   &.zh {
-    background-position: 0 -12px
+    background-position: 0 -12px;
   }
   &.en {
-    background-position: 0 -28px
+    background-position: 0 -28px;
   }
   &.de {
-    background-position: 0 -44px
+    background-position: 0 -44px;
   }
   &.id {
-    background-position: 0 -62px
+    background-position: 0 -62px;
   }
   &.pt {
-    background-position: 0 -79px
+    background-position: 0 -79px;
   }
 }
 
@@ -36,7 +36,7 @@ $flag: '/images/flag-logo.png';
   @include palette-background-paper;
   width: 200px;
   .v-list {
-    border-radius: 0
+    border-radius: 0;
   }
 }
 
@@ -51,28 +51,28 @@ $flag: '/images/flag-logo.png';
   display: flex;
   margin-top: $spacing1;
   label {
-    padding-top: 8px
+    padding-top: 8px;
   }
   ::v-deep .v-messages {
-    display: none
+    display: none;
   }
 }
 
 @keyframes slideRight {
   from {
     opacity: 0;
-    transform: translateX(-100px)
+    transform: translateX(-100px);
   }
   to {
     opacity: 1;
-    transform: none
+    transform: none;
   }
 }
 
 .header.v-app-bar.v-toolbar.v-sheet {
   ::v-deep .v-toolbar__content {
     height: auto !important;
-    margin: 4px 0
+    margin: 4px 0;
   }
   background-color: transparent;
   @include palette-text-primary;
@@ -84,21 +84,21 @@ $flag: '/images/flag-logo.png';
   .container {
     #main-wrap & {
       @include breakpoints-down(md) {
-        padding-left: 0
+        padding-left: 0;
       }
       @include breakpoints-down(xs) {
-        padding-right: 0
+        padding-right: 0;
       }
     }
   }
   nav {
     transition: all 0.5s ease-out;
     ul {
-      padding: 0
+      padding: 0;
     }
   }
   @include breakpoints-down(xs) {
-    z-index: 91
+    z-index: 91;
   }
   &.fixed {
     @include bg-color-darken($palette-primary-dark, 0.3);
@@ -107,30 +107,31 @@ $flag: '/images/flag-logo.png';
     .logo {
       a {
         color: transparent;
-        font-size: 0
+        font-size: 0;
       }
       img {
         height: 48px;
         width: 48px;
-        margin-bottom: 0
+        margin-bottom: 0;
       }
     }
     nav {
       padding: 0;
       .button {
-        padding: spacing(0.5, 2)
+        padding: spacing(0.5, 2);
       }
     }
     .text-btn {
-      color: $palette-common-white !important
+      color: $palette-common-white !important;
     }
     ul li a,
-    .setting .icon{
-      color: $palette-common-white !important
+    .setting .icon {
+      color: $palette-common-white !important;
     }
     .mobile-menu .bar {
       background-color: $palette-common-white;
-      &:after, &:before {
+      &:after,
+      &:before {
         background-color: $palette-common-white;
       }
     }
@@ -138,25 +139,27 @@ $flag: '/images/flag-logo.png';
   &.open-drawer {
     box-shadow: none !important;
     z-index: 90;
-    .setting .icon{
-      color: $palette-common-white !important
+    .setting .icon {
+      color: $palette-common-white !important;
     }
     .mobile-menu .bar {
       background-color: $palette-common-white;
-      &:after, &:before {
+      &:after,
+      &:before {
         background-color: $palette-common-white;
       }
     }
     .logo {
       a {
-        @include palette-text-primary
+        @include palette-text-primary;
       }
     }
   }
 }
 
-.v-toolbar__content, .v-toolbar__extension {
-  padding: 0
+.v-toolbar__content,
+.v-toolbar__extension {
+  padding: 0;
 }
 
 .header-content {
@@ -168,7 +171,7 @@ $flag: '/images/flag-logo.png';
     padding: $spacing2;
     display: flex;
     @include breakpoints-down(md) {
-      padding: spacing(2, 0)
+      padding: spacing(2, 0);
     }
   }
 }
@@ -176,7 +179,7 @@ $flag: '/images/flag-logo.png';
 .v-application .v-application--wrap .logo {
   a {
     @include breakpoints-down('sm') {
-      color: $palette-common-white
+      color: $palette-common-white;
     }
   }
 }
@@ -189,13 +192,13 @@ $flag: '/images/flag-logo.png';
     font-weight: $font-medium;
     position: relative;
     margin: spacing(0, 1);
-    text-decoration: none
+    text-decoration: none;
   }
   img {
     transition: all 0.3s ease-out;
-    max-width: 64px;
+    // max-width: 64px;
     height: 64px;
-    width: 64px;
+    // width: 64px;
     margin: 0 auto;
     display: block;
     margin-bottom: $spacing1;
@@ -213,14 +216,15 @@ $flag: '/images/flag-logo.png';
       color: $palette-common-white;
     }
   }
-  &.invert .logo a{
-    @include palette-text-primary
+  &.invert .logo a {
+    @include palette-text-primary;
   }
   &.mobile-menu {
     bar {
       @include breakpoints-down(sm) {
         background: $palette-common-white;
-        &:after, &:before {
+        &:after,
+        &:before {
           background: $palette-common-white;
         }
       }
@@ -229,7 +233,7 @@ $flag: '/images/flag-logo.png';
 }
 
 .button {
-  width: $spacing20
+  width: $spacing20;
 }
 
 .text-btn {
@@ -256,11 +260,12 @@ nav.nav-menu {
       @include palette-text-primary;
     }
     .text-btn {
-      @include palette-text-primary
+      @include palette-text-primary;
     }
     .mobile-menu .bar {
       @include palette-background-text-primary;
-      &:after, &:before {
+      &:after,
+      &:before {
         @include palette-background-text-primary;
       }
     }
@@ -270,15 +275,15 @@ nav.nav-menu {
     display: block;
     li {
       @include breakpoints-up(lg) {
-        margin: spacing(0, 1)
+        margin: spacing(0, 1);
       }
       list-style: none;
       position: relative;
       display: inline-block;
-      .v-btn  {
+      .v-btn {
         color: $palette-common-white;
         text-transform: capitalize;
-        font-Size: 16px;
+        font-size: 16px;
         font-weight: $font-medium;
         background: none !important;
         box-shadow: none;
@@ -295,21 +300,21 @@ nav.nav-menu {
           width: 0%;
           margin: 0 auto;
           bottom: -5px;
-          transition: all 0.2s cubic-bezier(0.42, 0.16, 0.21, 0.93)
+          transition: all 0.2s cubic-bezier(0.42, 0.16, 0.21, 0.93);
         }
         &:hover {
           transition: all 0.3s ease-out;
           opacity: 0.5;
           &:after {
             width: 20px;
-            background: $palette-common-white
+            background: $palette-common-white;
           }
         }
         &.active {
           color: $palette-secondary-light;
           &:after {
             background: $palette-common-white;
-            width: 20px
+            width: 20px;
           }
         }
       }
@@ -327,15 +332,15 @@ nav.nav-menu {
   }
   .lang-list {
     padding: 0;
-    .lang-opt{
+    .lang-opt {
       font-size: 0.875rem;
-      @include margin-left($spacing2)
+      @include margin-left($spacing2);
     }
   }
 }
 
 .mode-menu {
-  text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .user-menu {
@@ -351,30 +356,32 @@ nav.nav-menu {
     color: $palette-common-white;
   }
   .active {
-    transform: rotate(30deg)
+    transform: rotate(30deg);
   }
 }
 
 .title-menu {
-  text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .v-list-item__content {
-  padding: 0
+  padding: 0;
 }
 
 .mobile-menu {
   margin: spacing(0, 1);
   .bar {
     background-color: $palette-common-white;
-    &:after, &:before {
+    &:after,
+    &:before {
       background-color: $palette-common-white;
     }
   }
   &.active {
     .bar {
       @include palette-background-text-secondary;
-      &:after, &:before {
+      &:after,
+      &:before {
         @include palette-background-text-secondary;
       }
     }
@@ -387,7 +394,7 @@ nav.nav-menu {
   z-index: 90;
   min-width: 300px;
   @include breakpoints-down(xs) {
-    width: 100% !important
+    width: 100% !important;
   }
   .menu {
     padding: spacing(2, 5);
@@ -414,6 +421,6 @@ nav.nav-menu {
   }
   .divider-sidebar {
     background: rgba(255, 255, 255, 0.2);
-    margin: spacing(3, 0)
+    margin: spacing(3, 0);
   }
 }

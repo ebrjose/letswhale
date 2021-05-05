@@ -21,6 +21,17 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item
+          to="/deposit"
+          :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
+          link
+        >
+          <v-list-item-content>
+            <v-list-item-title class="menu-list">
+              {{ $t('saasLanding.header_deposit') }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </div>
   </div>
@@ -31,21 +42,21 @@
 </style>
 
 <script>
-import navMenu from './menu';
-import link from '~/static/text/link';
+import navMenu from './menu'
+import link from '~/static/text/link'
 
 export default {
   data() {
     return {
       link: link,
-      navMenu: navMenu
-    };
+      navMenu: navMenu,
+    }
   },
   props: {
     open: {
       type: Boolean,
-      default: false
-    }
-  }
-};
+      default: false,
+    },
+  },
+}
 </script>

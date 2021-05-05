@@ -95,7 +95,7 @@
                   </v-btn>
                 </li>
                 <li>
-                  <v-btn text > {{ $t('saasLanding.header_deposit') }} </v-btn>
+                  <v-btn text to="/deposit" > {{ $t('saasLanding.header_deposit') }} </v-btn>
                 </li>
               </scrollactive>
             </div>
@@ -105,8 +105,6 @@
             class="nav-menu"
           >
             <metamask />
-            <hidden point="xsDown">
-            </hidden>
           </nav>
         </div>
       </v-container>
@@ -119,7 +117,7 @@
 </style>
 
 <script>
-import logo from '~/static/images/ballena.png'
+import logo from '~/static/images/saas-logo.png'
 import link from '~/static/text/link'
 import brand from '~/static/text/brand'
 import Hidden from '../Hidden'

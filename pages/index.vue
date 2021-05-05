@@ -13,11 +13,14 @@
           <headline />
         </section>
 
-        <section id="earnings" :class="isMobile ? 'space-top-short' : 'space-top'">
+        <section id="earnings"  style="padding-top:50px">
           <feature />
         </section>
-        <section id="last" class="space-bottom-testi">
-          <testimonials />
+        <section id="last" style="padding-top:50px">
+          <last />
+        </section>
+        <section id="next" style="padding-top:150px">
+          <next />
         </section>
 
       </div>
@@ -40,7 +43,8 @@ import Banner from '~/components/Banner'
 import CompanyLogo from '~/components/CompanyLogo'
 import Headline from '~/components/Headline'
 import Feature from '~/components/Feature'
-import Testimonials from '~/components/Testimonials'
+import Last from '~/components/Last'
+import Next from '~/components/Next'
 // import PricingPlan from '~/components/PricingPlan'
 // import Faq from '~/components/Faq'
 // import NewsEvent from '~/components/NewsEvent'
@@ -55,7 +59,8 @@ export default {
     CompanyLogo,
     Headline,
     Feature,
-    Testimonials,
+    Last,
+    Next,
     FooterWithDeco,
     PageNav,
     Hidden,

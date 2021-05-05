@@ -1,8 +1,11 @@
-import express from 'express'
+import express, { json } from 'express'
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('Hello Worldo!')
-})
+// import routes
+import transactionRoutes from './routes/transactions'
+
+app.use(json())
+
+app.use('/transactions', transactionRoutes)
 
 export default app

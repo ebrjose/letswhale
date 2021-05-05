@@ -8,7 +8,7 @@
       class="notification"
     >
       <div class="action">
-        Message Sent
+        Deposit Sent
       </div>
       <v-btn
         text
@@ -30,7 +30,7 @@
     </hidden>
     <v-container class="inner-wrap max-md">
       <v-btn
-        :href="routeLink.saas.home"
+        :to="routeLink.saas.home"
         icon
         class="backtohome"
       >
@@ -61,23 +61,25 @@
               <v-row class="spacing6">
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
-                    v-model="name"
+                    class="input light"
+                    :value="humanBalance"
                     label="Total Balance"
                     color="white"
-                    class="input light"
-                    filled
                     suffix="BNB"
+                    readonly
+                    filled
                   />
                 </v-col>
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
-                    v-model="email"
-                    label="Investment Amount"
+                    v-model="amount"
                     class="input light"
+                    label="Investment Amount"
                     color="white"
-                    filled
-                    required
                     suffix="BNB"
+                    filled
+                    autofocus
+                    required
                   />
                 </v-col>
               </v-row>
@@ -121,7 +123,11 @@ import brand from '~/static/text/brand'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
 
+import { mapGetters, mapActions } from 'vuex'
+import { dec2weihex } from '~/assets/utils/number'
+
 export default {
+  layout: 'default',
   components: {
     Hidden,
   },
@@ -133,26 +139,64 @@ export default {
       nameRules: [v => !!v || 'Name is required'],
       email: '',
       emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
-      phone: '',
-      company: '',
-      message: '',
       checkbox: false,
       logo: logo,
       brand: brand,
       routeLink: link,
+      account: this.$store.state.metamask.account,
+      amount: null,
     }
   },
-  methods: {
-    validate() {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true
-      }
-    },
-  },
   computed: {
+    ...mapGetters('metamask', ['humanBalance']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
+    },
+  },
+  methods: {
+    ...mapActions('metamask', ['getWalletBalance']),
+    async sendTransaction() {
+      if (this.amount / 1 > this.humanBalance) {
+        alert('amount error')
+        return
+      }
+
+      const params = {
+        from: this.$store.state.metamask.account,
+        to: '0xc6e675854dce5bc61c7b7af049f0d28f99d34a84',
+        // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
+        // gas: '0x5208', // 30400
+        // gasPrice: '0x0', // 10000000000000
+        value: dec2weihex(this.amount), // 6250000000000000000 wei -> HEX
+        // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
+      }
+      try {
+        const transaction = await ethereum.request({
+          method: 'eth_sendTransaction',
+          params: [params],
+        })
+        console.log('sendTransaction -> transaction', transaction)
+
+        const dataTransaction = {
+          accountHash: params.from,
+          transactionHash: transaction,
+          amountHex: params.value,
+          amountDec: this.amount,
+        }
+        this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
+          console.log(data)
+          this.$router.push('/')
+          this.snackbar = true
+        })
+      } catch (error) {
+        console.log('sendTransaction -> error', error)
+      }
+    },
+    validate() {
+      if (this.$refs.form.validate()) {
+        this.sendTransaction()
+      }
     },
   },
 }
