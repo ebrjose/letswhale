@@ -242,10 +242,7 @@ module.exports = {
     },
   },
   // axios: {
-  //   proxy: true,
-  // },
-  // proxy: {
-  //   '/api/': { target: 'https://moonticket.sharedwithexpose.com/', pathRewrite: { '^/api/': '' }, changeOrigin: true },
+  //   baseURL: 'http://0.0.0.0:8008/',
   // },
   /*
   ** Build configuration
@@ -293,6 +290,7 @@ module.exports = {
   ** Application Port
   */
   server: {
+    host: '0',
     port: 8008, // default: 3000
   },
   /**
