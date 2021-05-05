@@ -26,6 +26,9 @@ export const getters = {
   wrongNetwork(state) {
     return state.chainId !== CHAINID
   },
+  totalInvested(state) {
+    return !!state.totalSent ? state.totalSent.toFixed(2) : 0
+  },
 }
 
 export const mutations = {
@@ -48,7 +51,7 @@ export const mutations = {
   SET_BALANCE(state, balance) {
     state.balance = balance
   },
-  SET_TOTAL_SENT(state, totalSent) {
+  SET_TOTAL_INVESTED(state, totalSent) {
     state.totalSent = totalSent
   },
   SET_METAMASK(state, value) {
@@ -83,7 +86,7 @@ export const actions = {
     const account = accounts[0]
     commit('SET_ACCOUNT', account)
     dispatch('getWalletBalance')
-    dispatch('getTransactionsSentAmount')
+    dispatch('getInvestedAmount')
   },
   changeEthereumChain({ dispatch }) {
     ethereum
@@ -102,10 +105,10 @@ export const actions = {
     commit('SET_BALANCE', balance)
     return balance
   },
-  async getTransactionsSentAmount({ state, commit }) {
+  async getInvestedAmount({ state, commit }) {
     const account = state.account
     const { data } = await this.$axios.get(`/api/transactions/sent/${account}`)
-    commit('SET_TOTAL_SENT', data.totalSent)
+    commit('SET_TOTAL_INVESTED', data.totalSent)
     return data.totalSent
   },
   async getProvider() {

@@ -28,6 +28,7 @@
         </nuxt-link>
       </div>
     </hidden>
+
     <v-container class="inner-wrap max-md">
       <v-btn
         :to="routeLink.saas.home"
@@ -47,13 +48,16 @@
       </div>
       <v-card class="form-box fragment-fadeUp">
         <div class="full-form-wrap">
+
           <h3 class="use-text-title title-contact pb-3 text-center">
             {{ $t('common.contact_title2') }}
           </h3>
           <p class="desc use-text-subtitle2 text-center">
             {{ $t('common.contact_subtitle') }}
           </p>
-          <div class="form">
+
+
+          <div v-if="loggedIn && !wrongNetwork" class="form">
             <v-form
               ref="form"
               v-model="valid"
@@ -73,6 +77,7 @@
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
                     v-model="amount"
+                    :rules="amountRules"
                     class="input light"
                     label="Investment Amount"
                     color="white"
@@ -106,6 +111,9 @@
               </div>
             </v-form>
           </div>
+          <div v-else>
+            <metamask class="metamask" />
+          </div>
         </div>
       </v-card>
     </v-container>
@@ -115,6 +123,11 @@
 <style lang="scss" scoped>
 @import './form-style.scss';
 @import '../Title/title-style.scss';
+.metamask {
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
 </style>
 
 <script>
@@ -122,6 +135,7 @@ import logo from '~/static/images/saas-logo.svg'
 import brand from '~/static/text/brand'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
+import Metamask from '~/components/Metamask'
 
 import { mapGetters, mapActions } from 'vuex'
 import { dec2weihex } from '~/assets/utils/number'
@@ -130,14 +144,17 @@ export default {
   layout: 'default',
   components: {
     Hidden,
+    Metamask,
   },
   data() {
     return {
       valid: true,
       snackbar: false,
-      name: '',
-      nameRules: [v => !!v || 'Name is required'],
-      email: '',
+      amountRules: [
+        v => !!v || 'Amount is required',
+        v => /^[0-9]+(\.[0-9]{1,4})?$/.test(v) || 'Amount must be have a valid format e.g. 1.234',
+        v => v > 1.5 || 'The minimum investment is 1.5 BNB',
+      ],
       emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
       checkbox: false,
       logo: logo,
@@ -148,20 +165,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('metamask', ['humanBalance']),
+    ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'wrongNetwork']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
     },
   },
   methods: {
-    ...mapActions('metamask', ['getWalletBalance']),
+    ...mapActions('metamask', ['connectWallet', 'getWalletBalance', 'getInvestedAmount']),
     async sendTransaction() {
-      if (this.amount / 1 > this.humanBalance) {
-        alert('amount error')
-        return
-      }
-
       const params = {
         from: this.$store.state.metamask.account,
         to: '0xc6e675854dce5bc61c7b7af049f0d28f99d34a84',
@@ -176,7 +188,6 @@ export default {
           method: 'eth_sendTransaction',
           params: [params],
         })
-        console.log('sendTransaction -> transaction', transaction)
 
         const dataTransaction = {
           accountHash: params.from,
@@ -185,7 +196,8 @@ export default {
           amountDec: this.amount,
         }
         this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-          console.log(data)
+          this.getInvestedAmount()
+          // this.getWalletBalance()
           this.$router.push('/')
           this.snackbar = true
         })

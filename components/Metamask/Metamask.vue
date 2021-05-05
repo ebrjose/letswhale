@@ -8,7 +8,7 @@
         </div>
         <div class="label">
           Invested:
-          <span class="amount">{{ totalSent }} BNB</span>
+          <span class="amount">{{ totalInvested }} BNB</span>
         </div>
       </div>
       <v-menu  offset-y>
@@ -73,15 +73,14 @@
 </style>
 <script>
 import Hidden from '@/components/Hidden'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     Hidden,
   },
   computed: {
-    ...mapState('metamask', ['totalSent']),
-    ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'accountShorted', 'wrongNetwork']),
+    ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'accountShorted', 'wrongNetwork', 'totalInvested']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
