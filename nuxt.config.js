@@ -5,7 +5,7 @@ import languages from './static/lang/languages'
 import brand from './static/text/brand'
 
 module.exports = {
-  mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -130,7 +130,7 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-        href: 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
+        href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
       },
     ],
   },
@@ -171,6 +171,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    // '@nuxtjs/proxy',
     ['@nuxtjs/html-minifier', { log: 'once', logHtml: true }],
     [
       'nuxt-mq',
@@ -195,7 +196,7 @@ module.exports = {
       {
         // Options
         //to make it seo friendly remove below line and add baseUrl option to production domain
-        seo: false,
+        seo: true,
         // baseUrl: 'https://my-nuxt-app.com',
         lazy: true,
         locales: languages,
@@ -240,6 +241,12 @@ module.exports = {
       },
     },
   },
+  // axios: {
+  //   proxy: true,
+  // },
+  // proxy: {
+  //   '/api/': { target: 'https://moonticket.sharedwithexpose.com/', pathRewrite: { '^/api/': '' }, changeOrigin: true },
+  // },
   /*
   ** Build configuration
   */

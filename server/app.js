@@ -1,11 +1,12 @@
 import express, { json } from 'express'
 const app = express()
-
+import { sequelize } from './db/models'
 // import routes
 import transactionRoutes from './routes/transactions'
 
-app.use(json())
+sequelize.sync()
 
+app.use(json())
 app.use('/transactions', transactionRoutes)
 
 export default app
