@@ -1,29 +1,5 @@
 <template>
   <div class="root">
-    <v-dialog
-      v-model="dialog"
-      max-width="690"
-    >
-      <v-card class="video-popup">
-        <v-card-title class="headline">
-          <h2 class="title">
-            {{ $t('saasLanding.banner_title') }}
-            <v-btn icon @click="handleVideoClose()">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-          </h2>
-        </v-card-title>
-        <div class="text-center" v-if="yt.use">
-          <youtube
-            :video-id="videoId"
-            :player-vars="playerVars"
-            :width= "640"
-            :height="360"
-            ref="youtube"
-          />
-        </div>
-      </v-card>
-    </v-dialog>
     <div class="decoration">
       <svg class="left-deco">
         <use xlink:href="/images/saas/deco-bg-left.svg#main" />
@@ -47,13 +23,10 @@
             </p>
             <div class="btn-area">
               <v-btn
-                text
-                class="play-btn"
-                @click="handleVideoOpen()"
+                href="#next"
+                color="primary mr-4"
+                large
               >
-                <span class="icon">
-                  <i class="ion-ios-play-outline" />
-                </span>
                 {{ $t('saasLanding.banner_btn_nexticos') }}
               </v-btn>
               <v-btn
@@ -86,7 +59,6 @@
   </div>
 </template>
 <script>
-import youtube from '~/youtube'
 import imgAPI from '~/static/images/imgAPI'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
@@ -112,24 +84,8 @@ export default {
         mute: 0,
         origin: 'https://localhost:8008',
       },
-      yt: youtube,
+      navOffset: 20,
     }
-  },
-  methods: {
-    handleVideoOpen() {
-      if (!this.yt.use) {
-        return false
-      }
-      this.dialog = true
-      setTimeout(() => {
-        this.player = this.$refs.youtube.player
-        this.player.playVideo()
-      }, 100)
-    },
-    handleVideoClose() {
-      this.dialog = false
-      this.player.pauseVideo()
-    },
   },
   computed: {
     isDesktop() {

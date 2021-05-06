@@ -38,12 +38,7 @@ $red: #f01a19;
 $darkred: #a75248;
 body {
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    $midgrey 0%,
-    $midgrey 70%,
-    $white 100%
-  );
+  background: linear-gradient(to bottom, $midgrey 0%, $midgrey 70%, $white 100%);
   overflow: hidden;
 }
 
@@ -190,6 +185,8 @@ body {
 .star li {
   list-style: none;
   position: absolute;
+  right: 15px;
+  bottom: -15px;
   &:before,
   &:after {
     content: '';

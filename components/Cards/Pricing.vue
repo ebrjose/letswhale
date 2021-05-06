@@ -6,14 +6,12 @@
     <div class="title-card">
       <p>{{ title }}</p>
       <h4 class="display-1">
-        <span v-if="price > 0">$</span>{{ calculatePrice }}
+        {{ title2 }}
       </h4>
     </div>
-    <ul>
-      <li v-for="(item, index) in featureList" :key="index">
-        {{ item }}
-      </li>
-    </ul>
+    <div class="info-text">
+      {{ info }}
+    </div>
     <div class="btn-area">
       <p class="desc">{{ desc }}</p>
       <v-btn
@@ -21,7 +19,7 @@
         class="button"
         large
       >
-        Choose Plan
+        GET STARTED
       </v-btn>
     </div>
   </v-card>
@@ -36,29 +34,24 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
-    price: {
-      type: Number,
-      required: true
+    title2: {
+      type: String,
+      required: true,
     },
-    featureList: {
-      type: Array,
-      required: true
+    info: {
+      type: String,
+      required: true,
     },
     desc: {
       type: String,
-      required: true
+      required: true,
     },
     type: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  computed: {
-    calculatePrice() {
-      return this.price > 0 ? this.price : 'Free'
-    }
-  }
 }
 </script>

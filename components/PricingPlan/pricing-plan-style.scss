@@ -1,10 +1,10 @@
 .root {
   position: relative;
-  z-index: 55
+  z-index: 55;
 }
 
 .subtitle {
-  margin-bottom: $spacing5
+  margin-bottom: $spacing5;
 }
 
 .decoration {
@@ -17,21 +17,21 @@
     @include use-theme(fill, $palette-primary-light, $palette-primary-dark);
     opacity: 0.2;
     @include breakpoints-up(lg) {
-      transform: scale(1.7, 1)
+      transform: scale(1.7, 1);
     }
     @include breakpoints-up(xl) {
-      display: none
+      display: none;
     }
     @include breakpoints-down(xs) {
       transform: scale(0.5);
-      transform-origin: center left
+      transform-origin: center left;
     }
   }
 }
 
 .item {
   &:hover {
-    z-index: 56 !important
+    z-index: 56 !important;
   }
 }
 
@@ -41,15 +41,17 @@
   display: flex;
   @include breakpoints-down(sm) {
     flex-wrap: wrap;
-    justify-content: space-around
+    justify-content: space-around;
   }
   @include breakpoints-up(lg) {
-    padding: spacing(0, 5)
+    justify-content: center;
+    padding: spacing(0, 5);
   }
   > * {
-    margin: 0 -8px
+    margin: 0 -8px;
   }
-  > *:first-child, & > *:last-child {
-    z-index: 1
+  > *:first-child,
+  & > *:last-child {
+    z-index: 1;
   }
 }

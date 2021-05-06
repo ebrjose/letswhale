@@ -1,16 +1,15 @@
 const brand = {
   saas: {
-    name: 'Software',
-    desc: 'Veluxi Saas - Vue Single Landing Page Template',
+    name: `LET's WHALE`,
+    desc: `LET's WHALE - Assure your allocation in Next Launchpads`,
     prefix: 'veluxi',
-    footerText: 'Veluxi Theme 2020',
-    logoText: 'Veluxi Software',
-    projectName: 'Software',
-    url: 'veluxi.ux-maestro.com/saas',
+    footerText: `LET's WHALE`,
+    logoText: `LET's WHALE`,
+    projectName: `LET's WHALE`,
+    url: 'letswhale.com',
     img: '/static/images/saas-logo.png',
-    notifMsg:
-      'Donec sit amet nulla sed arcu pulvinar ultricies commodo id ligula.'
-  }
+    notifMsg: '',
+  },
 }
 
 export default brand

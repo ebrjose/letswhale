@@ -17,11 +17,7 @@ $wave-deco-dark: '/images/saas/deco-wave-dark.png';
 }
 
 .root {
-  background: linear-gradient(
-    -45deg,
-    $palette-primary-main 20%,
-    $palette-primary-dark 70%
-  );
+  background: linear-gradient(-45deg, $palette-primary-main 20%, $palette-primary-dark 70%);
   position: relative;
   padding: spacing(25, 0, 15);
   @include breakpoints-up(lg) {
@@ -111,7 +107,7 @@ $wave-deco-dark: '/images/saas/deco-wave-dark.png';
 
 .play-btn {
   text-transform: uppercase;
-  color: $palette-common-white;
+  color: white !important;
   display: flex;
   align-items: center;
   font-size: 16px;

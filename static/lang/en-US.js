@@ -11,8 +11,7 @@ export default () => {
         error_without_status: 'An error occurred on the server',
         contact_title: 'Free Project Quote',
         contact_title2: 'INVESTMENT',
-        contact_subtitle: `This material has not been prepared in accordance with legal requirements designed to promote the independence of investment research, and that it is not subject to any prohibition on dealing ahead of the dissemination of investment research.
-Past performance is not an indication of, nor an assurance of future performance of any system or method as markets can change. No assurance can be given that any system or method will continue to perform similarly in the future. If you have any doubts about crypto-investings or method offered here you should first consult your own financial advisor.`,
+        contact_subtitle: `All the funds will be used to get pre-allocations of new tokens, offered only to large capital investors, and all the earnings will be distributed evenly based on the percentage of their deposits.`,
         form_name: 'What is your name? *',
         form_email: 'What it your email? *',
         form_phone: 'What is your phone number?',

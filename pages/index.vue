@@ -22,6 +22,9 @@
         <section id="next" style="padding-top:150px">
           <next />
         </section>
+        <section id="pricing">
+          <pricing-plan />
+        </section>
 
       </div>
       <section id="footer">
@@ -45,7 +48,7 @@ import Headline from '~/components/Headline'
 import Feature from '~/components/Feature'
 import Last from '~/components/Last'
 import Next from '~/components/Next'
-// import PricingPlan from '~/components/PricingPlan'
+import PricingPlan from '~/components/PricingPlan'
 // import Faq from '~/components/Faq'
 // import NewsEvent from '~/components/NewsEvent'
 import FooterWithDeco from '~/components/Footer/FooterWithDeco'
@@ -64,6 +67,7 @@ export default {
     FooterWithDeco,
     PageNav,
     Hidden,
+    PricingPlan,
   },
   computed: {
     isTablet() {

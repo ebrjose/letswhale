@@ -177,7 +177,6 @@ export default {
       return (this.fixed = false)
     },
     setOffset: function(offset) {
-      console.log('offset', offset)
       this.navOffset = offset
     },
     handleToggleOpen: function() {

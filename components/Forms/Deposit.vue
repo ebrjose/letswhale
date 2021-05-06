@@ -22,7 +22,7 @@
       <div class="logo logo-header">
         <nuxt-link :to="routeLink.saas.home">
           <img :src="logo" alt="logo">
-          <span class="use-text-title">
+          <span>
             {{ brand.saas.projectName }}
           </span>
         </nuxt-link>
@@ -131,7 +131,7 @@
 </style>
 
 <script>
-import logo from '~/static/images/saas-logo.svg'
+import logo from '~/static/images/saas-logo.png'
 import brand from '~/static/text/brand'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'

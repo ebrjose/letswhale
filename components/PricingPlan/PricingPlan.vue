@@ -26,10 +26,10 @@
             class="item"
           >
             <pricing-card
-              :price="0"
-              :feature-list="feature.basic"
-              title="Basic"
-              desc="Interdum et malesuada fames ac ante ipsum primis in faucibus. "
+              title="Plan"
+              title2="LARGE CAPITALS"
+              info="PAID NETWORK guarantees an allocation in the new projects being launched on their platform if you own 75.000 of the PAID token, that could mean half a million dollars just to be allowed an allocation in the IDO's."
+              desc="Only people with a large capital can get guaranteed access to new tokens on Launchpads"
               type="basic"
             />
           </u-animate>
@@ -41,39 +41,11 @@
             class="item"
           >
             <pricing-card
-              :price="24"
-              :feature-list="feature.best"
-              title="Best Value"
-              desc="Interdum et malesuada fames ac ante ipsum primis in faucibus. "
+              title="Joined we can doit."
+              title2="> 1000 BUSD"
+              info="To get whitelisted in projects like AIOZ or Cardstarter was really imposible for an average investor. As an example **BOLD-NEGRILLAS**PAID NETWORK guarantees an allocation in the new projects being launched on their platform if you own 75 000 of the PAID token, that could mean half a million dollars just to be allowed an allocation in the IDO's.*** With this site we want to make it possible for the average person that don't have that kind of money to spend to also be able to enter the premarket allocation. We have space for 700 people with a minimum deposit of 1000USD. With that money we will enter the biggest launchpads with the best new projects and distribute the earnings to all holders/investors, according to the percentage of the initial deposits."
+              desc="The crypto collected will be used to get early access to the best ICO's and IDO'S"
               type="value"
-            />
-          </u-animate>
-          <u-animate
-            :offset="-10"
-            name="fadeInUpShort"
-            delay="0.6s"
-            duration="0.4s"
-            class="item"
-          >
-            <pricing-card
-              :price="54"
-              :feature-list="feature.pro"
-              title="Pro"
-              desc="Interdum et malesuada fames ac ante ipsum primis in faucibus. "
-            />
-          </u-animate>
-          <u-animate
-            :offset="-10"
-            name="fadeInUpShort"
-            delay="0.8s"
-            duration="0.4s"
-            class="item"
-          >
-            <pricing-card
-              :price="99"
-              :feature-list="feature.enterprise"
-              title="Enterprise"
-              desc=" Interdum et malesuada fames ac ante ipsum primis in faucibus. "
             />
           </u-animate>
         </u-animate-container>
@@ -91,49 +63,45 @@ import Title from '../Title'
 import PricingCard from '../Cards/Pricing'
 
 const featureList = {
-  basic: [
-    'Nam sollicitudin dignissim',
-    'Cras convallis lacus',
-    'Quisque ut metus'
-  ],
+  basic: ['Nam sollicitudin dignissim', 'Cras convallis lacus', 'Quisque ut metus'],
   best: [
     'Nam sollicitudin dignissim',
     'Cras convallis lacus',
     'Quisque ut metus',
     'Vivamus sit amet',
-    'Cras convallis lacus orci'
+    'Cras convallis lacus orci',
   ],
   pro: [
     'Nam sollicitudin dignissim',
     'Cras convallis lacus',
     'Nulla lobortis nunc',
     'Vitae scelerisque',
-    'Duis sed augue'
+    'Duis sed augue',
   ],
   enterprise: [
     'Nam sollicitudin dignissim',
     'Pellentesque ac bibendum ',
     'Vestibulum consequat',
     'Donec commodo',
-    'Duis tristique metus'
-  ]
+    'Duis tristique metus',
+  ],
 }
 
 export default {
   components: {
     'title-main': Title,
-    PricingCard
+    PricingCard,
   },
   data() {
     return {
-      feature: featureList
+      feature: featureList,
     }
   },
   computed: {
     isDesktop() {
       const lgUp = this.$store.state.breakpoints.lgUp
       return lgUp.indexOf(this.$mq) > -1
-    }
-  }
+    },
+  },
 }
 </script>
