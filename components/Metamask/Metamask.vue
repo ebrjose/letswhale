@@ -46,6 +46,7 @@
         </v-btn>
       </template>
     </fragment>
+    <!-- <dialog-metamask /> -->
   </div>
 </template>
 <style lang="scss" scoped>
@@ -73,11 +74,14 @@
 </style>
 <script>
 import Hidden from '@/components/Hidden'
+// import DialogMetamask from '~/components/DialogMetamask'
+
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     Hidden,
+    // DialogMetamask,
   },
   computed: {
     ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'accountShorted', 'wrongNetwork', 'totalInvested']),

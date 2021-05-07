@@ -16,14 +16,17 @@
         <section id="earnings"  style="padding-top:50px">
           <feature />
         </section>
+
+        <section id="plan" style="padding-top:50px">
+          <pricing-plan />
+        </section>
+
         <section id="last" style="padding-top:50px">
           <last />
         </section>
+
         <section id="next" style="padding-top:150px">
           <next />
-        </section>
-        <section id="pricing">
-          <pricing-plan />
         </section>
 
       </div>

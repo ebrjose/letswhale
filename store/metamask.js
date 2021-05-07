@@ -29,6 +29,9 @@ export const getters = {
   totalInvested(state) {
     return !!state.totalSent ? state.totalSent.toFixed(2) : 0
   },
+  showDialog(state) {
+    return state.isMetaMask === false
+  },
 }
 
 export const mutations = {
@@ -54,7 +57,7 @@ export const mutations = {
   SET_TOTAL_INVESTED(state, totalSent) {
     state.totalSent = totalSent
   },
-  SET_METAMASK(state, value) {
+  SET_IS_METAMASK(state, value) {
     state.isMetaMask = value
   },
 }
@@ -67,13 +70,15 @@ export const actions = {
       } else {
         const provider = await dispatch('getProvider')
         if (provider.isMetaMask) {
-          commit('SET_METAMASK', true)
+          commit('SET_IS_METAMASK', true)
           dispatch('changeEthereumChain')
         } else {
-          commit('SET_METAMASK', false)
+          // Add Binance Network to MetaMask
+          commit('SET_IS_METAMASK', false)
         }
       }
     } else {
+      alert('Please install MetaMask first - https://metamask.io/')
       console.log('Metamask is not installed')
     }
   },

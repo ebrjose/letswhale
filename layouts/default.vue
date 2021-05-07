@@ -31,7 +31,7 @@ export default {
     }
   },
   created() {
-    if (process.browser) {
+    if (process.browser && typeof window.ethereum !== 'undefined') {
       this.checkConection()
       ethereum.on('chainChanged', chainId => {
         this.setNetwork()
