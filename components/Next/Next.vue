@@ -29,11 +29,13 @@
                 <div class="tab-content">
                   <section>
                     <h6 class="text-center use-text-subtitle2">
-                      Ispolink is novel cross-chain platform for hiring developers powered by Binance Smart Chain and
-                      Polygon’s layer 2 technology, we use blockchain for searching leading talents with internal AI-powered
-                      algorithms. Our interoperable blockchain ecosystem enable scalable decentralized payments and multiple
-                      in-platform token utilities which have been designed to tap in on the huge talent pool within the
-                      blockchain space.
+                      <p class="px-5">
+                        Ispolink is novel cross-chain platform for hiring developers powered by Binance Smart Chain and
+                        Polygon’s layer 2 technology, we use blockchain for searching leading talents with internal AI-powered
+                        algorithms. Our interoperable blockchain ecosystem enable scalable decentralized payments and multiple
+                        in-platform token utilities which have been designed to tap in on the huge talent pool within the
+                        blockchain space.
+                      </p>
                     </h6>
                     <div class="illustration-center">
                       <figure class="figure screen">
@@ -47,12 +49,12 @@
                 <div class="tab-content">
                   <section>
                     <h6 class="text-center use-text-subtitle2">
-                      <p>
+                      <p class="px-5">
                         BlockBank is powered by our platform's utility token called BANK. Users are able to gain access to our
                         credit card rewards program, use our advanced AI assistant, increase their APY % and earn interest on
                         their tokens by staking BANK in their non-custodial BlockBank cryptocurrency wallet.
                       </p>
-                      <p>
+                      <p class="px-5">
                         By employing state-of-the-art technological solutions, our multi-purpose platform offers our users a
                         convenient digital banking experience bridging the gap between CeFi and DeFi.
                       </p>
@@ -69,7 +71,7 @@
                 <div class="tab-content">
                   <section>
                     <h6 class="text-center use-text-subtitle2">
-                      <p>
+                      <p class="px-5">
                         Charli3 is the first decentralized oracle being built on Cardano. This allows Charli3 to have all the
                         benefits of existing successful oracle protocols, while having the flexibility of a much more agile
                         blockchain backbone.

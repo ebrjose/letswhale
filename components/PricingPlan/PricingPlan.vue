@@ -28,8 +28,8 @@
             <pricing-card
               title="OUR PLAN"
               title2="LARGE CAPITALS"
-              info="As example PAID NETWORK guarantees an allocation in the new projects being launched on their platform if you own 75.000 of the PAID token, that could mean half a million dollars just to be allowed an allocation in the IDOs."
-              desc="Only people with a large capital can get guaranteed access to new tokens on Launchpads"
+              info="An example PAID NETWORK guarantees an allocation in the new projects being launched on their platform if you own 75.000 of the PAID token, that could mean half a million dollars just to be allowed an allocation in the IDOs."
+              desc="Only people with a large capital can get guaranteed access to new tokens on Launchpads, but not anymore."
               type="basic"
             />
           </u-animate>
