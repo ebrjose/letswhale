@@ -196,7 +196,7 @@ module.exports = {
         // Options
         //to make it seo friendly remove below line and add baseUrl option to production domain
         seo: true,
-        // baseUrl: 'https://my-nuxt-app.com',
+        baseUrl: 'https://letswhale.com',
         lazy: true,
         locales: languages,
         defaultLocale: 'en',
@@ -240,9 +240,9 @@ module.exports = {
       },
     },
   },
-  // axios: {
-  //   baseURL: 'http://0.0.0.0:8008/',
-  // },
+  axios: {
+    baseURL: process.env.NODE_ENV === 'production' ? 'http://209.126.6.249:8008/' : 'http://192.168.1.100:8008/',
+  },
   /*
   ** Build configuration
   */
@@ -288,10 +288,10 @@ module.exports = {
   /*
   ** Application Port
   */
-  server: {
-    host: '0',
-    port: 8008, // default: 3000
-  },
+  // server: {
+  //   host: '0',
+  //   port: 8008, // default: 3000
+  // },
   /**
    * API
    */
