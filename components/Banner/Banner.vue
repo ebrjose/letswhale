@@ -41,7 +41,7 @@
         </v-col>
         <v-col cols="12" md="6">
           <div class="illustration">
-            <Rocket />
+            <Particle />
           </div>
         </v-col>
       </v-row>
@@ -62,11 +62,13 @@
 import imgAPI from '~/static/images/imgAPI'
 import link from '~/static/text/link'
 import Hidden from '../Hidden'
-import Rocket from '~/components/Rocket'
+
+import Particle from '~/components/Animations/Particle'
+
 export default {
   components: {
     Hidden,
-    Rocket,
+    Particle,
   },
   data() {
     return {
