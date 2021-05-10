@@ -1,4 +1,4 @@
-export const CHAINID = 97
+export const CHAINID = process.env.CHAIN_ID || 97
 
 export const ETHEREUM_CHAIN = {
   56: {
@@ -6,13 +6,13 @@ export const ETHEREUM_CHAIN = {
     chainName: 'Binance Smart Chain',
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     rpcUrls: ['https://bsc-dataseed.binance.org/'],
-    blockExplorerUrls: ['https://bscscan.com/']
+    blockExplorerUrls: ['https://bscscan.com/'],
   },
   97: {
     chainId: '0x61',
     chainName: 'Smart Chain - Testnet',
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
-    blockExplorerUrls: ['https://testnet.bscscan.com']
-  }
+    blockExplorerUrls: ['https://testnet.bscscan.com'],
+  },
 }
