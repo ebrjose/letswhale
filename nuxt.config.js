@@ -241,7 +241,7 @@ module.exports = {
     },
   },
   axios: {
-    baseURL: process.env.NODE_ENV === 'production' ? 'http://209.126.6.249:8008/' : 'http://192.168.1.100:8008/',
+    baseURL: process.env.NODE_ENV === 'production' ? 'http://letswhale.com/' : 'http://localhost:3000/',
   },
   /*
   ** Build configuration
