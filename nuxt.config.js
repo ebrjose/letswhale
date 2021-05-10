@@ -240,9 +240,6 @@ module.exports = {
       },
     },
   },
-  axios: {
-    baseURL: process.env.NODE_ENV === 'production' ? 'http://letswhale.com/' : 'http://localhost:3000/',
-  },
   /*
   ** Build configuration
   */
