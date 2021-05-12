@@ -1,5 +1,6 @@
 <template>
   <div class="particle">
+    <img class="image" src="/images/whale.png" alt="">
     <div class="wrap">
       <div v-for="i in 300" :key="i" class="c" />
     </div>
@@ -17,6 +18,11 @@ $base-hue: 180; // change for diff colors (180 is nice)
   position: relative;
   height: 100%;
   width: 100%;
+  .image {
+    position: absolute;
+    top: 10%;
+    left: -8%;
+  }
 }
 
 .wrap {
@@ -25,7 +31,7 @@ $base-hue: 180; // change for diff colors (180 is nice)
   left: 50%;
   width: 0;
   height: 0;
-  // transform-style: preserve-3d;
+  transform-style: preserve-3d;
   // perspective: 1000px;
   perspective: 1000px;
   animation: rotate $time infinite linear; // rotate orb

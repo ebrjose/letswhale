@@ -124,4 +124,13 @@ export const actions = {
     const chainId = parseInt(ethereum.chainId, 16)
     commit('SET_CHAINID', chainId)
   },
+  async fetchWalletBalance({ state, dispatch }) {
+    const oldBalance = state.balance
+    const newBalance = await dispatch('getWalletBalance')
+    if (newBalance === oldBalance) {
+      setTimeout(function() {
+        dispatch('fetchWalletBalance')
+      }, 5000)
+    }
+  },
 }

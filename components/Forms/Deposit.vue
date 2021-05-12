@@ -172,7 +172,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('metamask', ['connectWallet', 'getWalletBalance', 'getInvestedAmount']),
+    ...mapActions('metamask', ['connectWallet', 'fetchWalletBalance', 'getInvestedAmount']),
     async sendTransaction() {
       const params = {
         from: this.$store.state.metamask.account,
@@ -197,7 +197,7 @@ export default {
         }
         this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
           this.getInvestedAmount()
-          // this.getWalletBalance()
+          this.fetchWalletBalance()
           this.$router.push('/')
           this.snackbar = true
         })

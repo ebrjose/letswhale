@@ -132,6 +132,12 @@ module.exports = {
         href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
       },
     ],
+    script: [
+      {
+        src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/23500/ps-0.9.js',
+        body: true,
+      },
+    ],
   },
   /*
   ** Customize the progress-bar color

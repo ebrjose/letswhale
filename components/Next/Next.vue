@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="item last">
-      <title-main align="center">
+      <title-main align="center px-5">
         <span>
           NEXT ICOs TO BE LAUCHED
         </span>
