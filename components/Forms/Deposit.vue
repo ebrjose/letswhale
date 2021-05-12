@@ -53,7 +53,10 @@
             {{ $t('common.contact_title2') }}
           </h3>
           <p class="desc use-text-subtitle2 text-center">
-            {{ $t('common.contact_subtitle') }}
+            Part of the funds will be used to buy launchpad tokens, so we get VIP access to IDOs, and the rest of the funds we will invest in the IDOs. All the earnings will be distributed evenly based on the percentage of your deposits.
+          </p>
+          <p class="desc use-text-subtitle2 text-center">
+            Seven percent of the earnings will be used to pay the wallet management <strong>(no investment funds will be used to pay the wallet management).</strong>
           </p>
 
 
@@ -153,7 +156,7 @@ export default {
       amountRules: [
         v => !!v || 'Amount is required',
         v => /^[0-9]+(\.[0-9]{1,4})?$/.test(v) || 'Amount must be have a valid format e.g. 1.234',
-        v => v > 1.5 || 'The minimum investment is 1.5 BNB',
+        v => v >= 1.6 || 'The minimum investment is 1.6 BNB',
       ],
       emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
       checkbox: false,

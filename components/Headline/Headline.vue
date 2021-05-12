@@ -22,10 +22,10 @@
                   v-countUp:onWindowScroll.once="{
                     watchedElId: 'watched_counter',
                     startValue: 0,
-                    endValue: 1000,
-                    options: { duration: 1 }
+                    endValue: 1.6,
+                    options: { duration: 2, decimals: 1 }
                   }"
-                /> BUSD
+                /> BNB
               </h3>
               <p class="use-text-subtitle">
                 <v-icon>mdi-cash-multiple</v-icon>
