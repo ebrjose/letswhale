@@ -6,9 +6,11 @@
         <section id="home">
           <banner />
         </section>
-        <section>
+
+        <section class="mt-5">
           <company-logo />
         </section>
+
         <section :class="!isMobile && 'space-top-short'">
           <headline />
         </section>

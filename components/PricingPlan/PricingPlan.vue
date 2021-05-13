@@ -43,7 +43,7 @@
             <pricing-card
               title="Joined we can do it."
               title2="> 1.6 BNB"
-              info="To get whitelisted in new projects are almost imposible for an average investor. With this site we want to make it possible for the average person that don't have that kind of money to spend to also be able to enter the premarket allocation. We have space for 700 people with a minimum deposit of 1000USD. With that money we will enter the biggest launchpads with the best new projects and distribute the earnings to all holders/investors, according to the percentage of the initial deposits."
+              info="To get whitelisted in new projects are almost imposible for an average investor. With this site we want to make it possible for the average person that don't have that kind of money to spend to also be able to enter the premarket allocation. We have space for 700 people with a minimum deposit of 1.6 BNB. With that money we will enter the biggest launchpads with the best new projects and distribute the earnings to all holders/investors, according to the percentage of the initial deposits."
               desc="The crypto collected will be used to get early access to the best ICO's and IDO'S"
               type="value"
             />

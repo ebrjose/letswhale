@@ -1,7 +1,7 @@
 const brand = {
   saas: {
     name: `LET's WHALE`,
-    desc: `LET's WHALE - Assure your allocation in Next Launchpads`,
+    desc: `LET's WHALE - Assure your allocation in next IDOs`,
     prefix: 'veluxi',
     footerText: `LET's WHALE`,
     logoText: `LET's WHALE`,

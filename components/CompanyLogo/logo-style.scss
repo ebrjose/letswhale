@@ -1,3 +1,6 @@
+.company-logo {
+  position: relative;
+}
 .root {
   display: flex;
   @include breakpoints-up(sm) {
