@@ -202,8 +202,7 @@ $flag: '/images/flag-logo.png';
     display: block;
     margin-bottom: $spacing1;
     @include breakpoints-down(xs) {
-      height: 48px;
-      width: 48px;
+      height: 28px !important;
     }
   }
 }

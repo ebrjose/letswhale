@@ -1,5 +1,5 @@
 .root {
-  position: relative
+  position: relative;
 }
 
 .decoration {
@@ -18,11 +18,11 @@
       transform: scale(2.5, 1);
     }
     @include breakpoints-up(xl) {
-      display: none
+      display: none;
     }
     @include breakpoints-down(xs) {
       transform: scale(0.5);
-      transform-origin: center left
+      transform-origin: center left;
     }
   }
 }
@@ -30,29 +30,29 @@
 .item {
   position: relative;
   min-height: 320px;
-  margin-bottom: $spacing20;
+  margin-bottom: $spacing5;
   .desc {
     position: relative;
-    z-index: 60
+    z-index: 60;
   }
   &.last {
-    margin-bottom: $spacing10
+    margin-bottom: $spacing10;
   }
   @include breakpoints-down(md) {
-    margin-bottom: $spacing15
+    margin-bottom: $spacing15;
   }
   @include breakpoints-down(sm) {
-    text-align: center
+    text-align: center;
   }
   h6 {
-    margin-bottom: $spacing5
+    margin-bottom: $spacing5;
   }
   .parallax-wrap {
     .Masthead {
       overflow: visible;
       min-height: 80vh;
       @include breakpoints-down(xs) {
-        min-height: 30vh
+        min-height: 30vh;
       }
     }
     @include breakpoints-up(md) {
@@ -63,13 +63,13 @@
       height: 100%;
     }
     @include breakpoints-down(sm) {
-      margin: spacing(3, 0)
+      margin: spacing(3, 0);
     }
-    @include breakpoints-down(xs){
-      margin: 0
+    @include breakpoints-down(xs) {
+      margin: 0;
     }
-    .viewport  {
-      perspective: 1000px
+    .viewport {
+      perspective: 1000px;
     }
   }
   .figure {
@@ -82,7 +82,7 @@
     padding-top: $spacing3;
     margin: $spacing3;
     img {
-      width: 100%
+      width: 100%;
     }
   }
 }
@@ -91,14 +91,14 @@
   position: relative;
   img {
     width: 90%;
-    display: block
+    display: block;
   }
 }
 .graphic {
   position: relative;
   img {
     width: 90%;
-    display: block
+    display: block;
   }
 }
 
@@ -107,21 +107,21 @@
   z-index: 55;
   margin-top: $spacing5 * -1;
   .v-tabs-slider-wrapper .v-tabs-slider {
-    background-color: $palette-primary-light !important
+    background-color: $palette-primary-light !important;
   }
   section {
-    @include breakpoints-down(sm){
-      margin: spacing(3, 0)
+    @include breakpoints-down(sm) {
+      margin: spacing(3, 0);
     }
   }
   ::v-deep .v-slide-group__prev.v-slide-group__prev--disabled {
     @include breakpoints-down(xs) {
-      display: none !important
+      display: none !important;
     }
   }
   ::v-deep .v-slide-group__wrapper {
     @include breakpoints-down(xs) {
-      overflow: auto
+      overflow: auto;
     }
   }
 }
@@ -129,12 +129,12 @@
 .tab-content {
   position: relative;
   @include breakpoints-up(md) {
-    padding: spacing(8, 4, 0)
+    padding: spacing(8, 4, 0);
   }
   section {
     position: relative;
     div {
-      overflow: visible
+      overflow: visible;
     }
   }
 }
@@ -145,15 +145,15 @@
   letter-spacing: 0;
   padding: spacing(0, 5);
   border-bottom: 1px solid;
-  @include use-theme(border-color, $light-text-disabled,  $dark-text-disabled);
+  @include use-theme(border-color, $light-text-disabled, $dark-text-disabled);
   @include breakpoints-down(xs) {
     font-size: 14px;
   }
   &.selected {
-    @include use-theme(color, $palette-primary-main, $palette-primary-light)
+    @include use-theme(color, $palette-primary-main, $palette-primary-light);
   }
   .theme--dark & {
-    color: $palette-primary-light
+    color: $palette-primary-light;
   }
 }
 
@@ -169,10 +169,10 @@
     @include breakpoints-up(md) {
       margin-top: 350px;
       .v-application--is-ltr & {
-        transform: rotateY(30deg)
+        transform: rotateY(30deg);
       }
       .v-application--is-rtl & {
-        transform: rotateY(-30deg)
+        transform: rotateY(-30deg);
       }
     }
   }
@@ -182,10 +182,10 @@
     width: 360px;
     @include breakpoints-up(md) {
       .v-application--is-ltr & {
-        transform: rotateY( 30deg ) rotateX(-5deg) rotateZ(0deg)
+        transform: rotateY(30deg) rotateX(-5deg) rotateZ(0deg);
       }
       .v-application--is-rtl & {
-        transform: rotateY( -30deg ) rotateX(-5deg) rotateZ(0deg)
+        transform: rotateY(-30deg) rotateX(-5deg) rotateZ(0deg);
       }
     }
   }
@@ -204,10 +204,10 @@
       top: 40px;
       margin-top: 400px;
       .v-application--is-ltr & {
-        transform: rotateY(-30deg)
+        transform: rotateY(-30deg);
       }
       .v-application--is-rtl & {
-        transform: rotateY(30deg)
+        transform: rotateY(30deg);
       }
     }
   }
@@ -221,10 +221,10 @@
     @include breakpoints-up(md) {
       transform-style: preserve-3d;
       .v-application--is-ltr & {
-        transform: rotateY(-19deg) rotateX(1deg) rotateZ(-2deg)
+        transform: rotateY(-19deg) rotateX(1deg) rotateZ(-2deg);
       }
       .v-application--is-rtl & {
-        transform: rotateY(19deg) rotateX(1deg) rotateZ(-2deg)
+        transform: rotateY(19deg) rotateX(1deg) rotateZ(-2deg);
       }
     }
   }
@@ -237,10 +237,10 @@
     text-align: center;
     max-width: 700px;
     margin: -50px auto 0;
-    transform: rotateY( 0 ) rotateX(35deg) rotateZ(0deg);
+    transform: rotateY(0) rotateX(35deg) rotateZ(0deg);
     img {
       margin: 0 auto;
-      width: 100%
+      width: 100%;
     }
   }
 }
