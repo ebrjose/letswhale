@@ -16,3 +16,5 @@ export const ETHEREUM_CHAIN = {
     blockExplorerUrls: ['https://testnet.bscscan.com'],
   },
 }
+
+export const WALLET_ACCOUNT = process.env.WALLET_ACCOUNT

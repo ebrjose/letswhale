@@ -35,8 +35,8 @@
         icon
         class="backtohome"
       >
-        <i class="ion-ios-home-outline" />
-        <i class="ion-ios-arrow-thin-left" />
+        <i class="mdi mdi-home" />
+        <i class="mdi mdi-arrow-left" />
       </v-btn>
       <div class="decoration">
         <svg class="left-deco">
@@ -179,7 +179,7 @@ export default {
     async sendTransaction() {
       const params = {
         from: this.$store.state.metamask.account,
-        to: '0xc6e675854dce5bc61c7b7af049f0d28f99d34a84',
+        to: this.$store.state.metamask.walletAccount,
         // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
         // gas: '0x5208', // 30400
         // gasPrice: '0x0', // 10000000000000

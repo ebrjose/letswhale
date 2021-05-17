@@ -1,4 +1,4 @@
-import { CHAINID, ETHEREUM_CHAIN } from './constants'
+import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT } from './constants'
 import { dec2weihex, weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
 
@@ -8,6 +8,7 @@ export const state = () => ({
   balance: null,
   totalSent: null,
   isMetaMask: false,
+  walletAccount: WALLET_ACCOUNT,
 })
 
 export const getters = {
@@ -131,6 +132,34 @@ export const actions = {
       setTimeout(function() {
         dispatch('fetchWalletBalance')
       }, 5000)
+    }
+  },
+  async sendTransaction({ state }, amount) {
+    const params = {
+      from: state.metamask.account,
+      to: '0xc6e675854dce5bc61c7b7af049f0d28f99d34a84', // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
+      // gas: '0x5208', // 30400
+      // gasPrice: '0x0', // 10000000000000
+      value: dec2weihex(this.amount), // 6250000000000000000 wei -> HEX
+      // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
+    }
+    try {
+      const transaction = await ethereum.request({ method: 'eth_sendTransaction', params: [params] })
+
+      const dataTransaction = {
+        accountHash: params.from,
+        transactionHash: transaction,
+        amountHex: params.value,
+        amountDec: amount,
+      }
+      this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
+        this.getInvestedAmount()
+        this.fetchWalletBalance()
+        this.$router.push('/')
+        this.snackbar = true
+      })
+    } catch (error) {
+      console.log('sendTransaction -> error', error)
     }
   },
 }
