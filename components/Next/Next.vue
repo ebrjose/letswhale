@@ -22,24 +22,24 @@
               centered
             >
               <v-tabs-slider color="primary" />
-              <v-tab class="tab-label" href="#tab-1">Ispolink</v-tab>
-              <v-tab class="tab-label" href="#tab-2">blockbank</v-tab>
-              <v-tab class="tab-label" href="#tab-3">charli3</v-tab>
+              <v-tab class="tab-label" href="#tab-1">Cere Network</v-tab>
+              <v-tab class="tab-label" href="#tab-2">ECO</v-tab>
+              <v-tab class="tab-label" href="#tab-3">Enso Finance</v-tab>
               <v-tab-item value="tab-1">
                 <div class="tab-content">
                   <section>
                     <h6 class="text-center use-text-subtitle2">
                       <p class="px-5">
-                        Ispolink is novel cross-chain platform for hiring developers powered by Binance Smart Chain and
-                        Polygon’s layer 2 technology, we use blockchain for searching leading talents with internal AI-powered
-                        algorithms. Our interoperable blockchain ecosystem enable scalable decentralized payments and multiple
-                        in-platform token utilities which have been designed to tap in on the huge talent pool within the
-                        blockchain space.
+                        Cere’s DDC platform is the “next-gen Snowflake”. It establishes a more secure first-party data foundation in the cloud by using
+                        blockchain identity and data encryption to onboard and segment individual consumer data.
+                      </p>
+                      <p class="px-5">
+                        Cere makes data directly accessible in near real-time by all business units, partners/vendors, and machine-learning processes. This in turn enables secure and private data collaborations through Cere’s Open Data Marketplace (ODM) which is free from traditional vendor lock-ins.
                       </p>
                     </h6>
                     <div class="illustration-center">
                       <figure class="figure screen">
-                        <img src="/images/nextcoins/ipsolink_web.jpg" alt="screen" />
+                        <img src="/images/nextcoins/CereNetwork.jpg" alt="screen" />
                       </figure>
                     </div>
                   </section>
@@ -50,18 +50,19 @@
                   <section>
                     <h6 class="text-center use-text-subtitle2">
                       <p class="px-5">
-                        BlockBank is powered by our platform's utility token called BANK. Users are able to gain access to our
-                        credit card rewards program, use our advanced AI assistant, increase their APY % and earn interest on
-                        their tokens by staking BANK in their non-custodial BlockBank cryptocurrency wallet.
+                        Eco is one simple balance that lets you spend, send, save and make money at the same time. Join the 170,000+ people ready for Smart Money.
                       </p>
                       <p class="px-5">
-                        By employing state-of-the-art technological solutions, our multi-purpose platform offers our users a
-                        convenient digital banking experience bridging the gap between CeFi and DeFi.
+                        Eco is not a checking account because you earn 2.5% on your balance (and up to 5% when you refer friends).
+                        Eco is not a credit card because every time you spend at your favorite merchants you get 5% back.
+                      </p>
+                      <p class="px-5">
+                        It replaces both with rewards that seem too good to be true (but actually aren’t).
                       </p>
                     </h6>
                     <div class="illustration-center">
                       <figure class="figure screen">
-                        <img src="/images/nextcoins/blockbank_web.jpg" alt="screen" />
+                        <img src="/images/nextcoins/Eco.jpg" alt="screen" />
                       </figure>
                     </div>
                   </section>
@@ -72,14 +73,14 @@
                   <section>
                     <h6 class="text-center use-text-subtitle2">
                       <p class="px-5">
-                        Charli3 is the first decentralized oracle being built on Cardano. This allows Charli3 to have all the
-                        benefits of existing successful oracle protocols, while having the flexibility of a much more agile
-                        blockchain backbone.
+                        Discover and create open defi strategies.
+                        Create social metastrategies with batch asset purchasing, yield farming, liquidity mining,
+                        tolerance band rebalancing, restructuring, flash swaps, collateralization, and arbitrage.
                       </p>
                     </h6>
                     <div class="illustration-center">
                       <figure class="figure screen">
-                        <img src="/images/nextcoins/charli3_web.jpg" alt="screen" />
+                        <img src="/images/nextcoins/EnsoFinance.jpg" alt="screen" />
                       </figure>
                     </div>
                   </section>
