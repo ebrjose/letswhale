@@ -163,7 +163,7 @@ module.exports = {
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: ['@nuxtjs/vuetify', '@nuxtjs/google-analytics'],
+  buildModules: ['@nuxtjs/vuetify'],
   /*
   ** Nuxt.js modules
   */
@@ -218,12 +218,6 @@ module.exports = {
   vuetify: {
     customVariables: ['~/assets/styles.scss'],
     optionsPath: './config/vuetify.options.js',
-  },
-  /**
-   * Google Analytics
-   */
-  googleAnalytics: {
-    id: 'G-FKNTGTVE10',
   },
   /*
   ** Render configuration

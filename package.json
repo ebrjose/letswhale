@@ -61,7 +61,6 @@
 		"webpack-node-externals": "^1.7.2"
 	},
 	"devDependencies": {
-		"@nuxtjs/google-analytics": "^2.4.0",
 		"@nuxtjs/vuetify": "^1.9.1",
 		"babel-eslint": "^8.2.6",
 		"eslint": "^5.0.1",

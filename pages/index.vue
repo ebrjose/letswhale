@@ -84,7 +84,7 @@ export default {
   },
   head() {
     return {
-      title: brand.saas.name + ' - Home Page',
+      title: brand.saas.title,
     }
   },
 }
