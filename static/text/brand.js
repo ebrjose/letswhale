@@ -12,6 +12,7 @@ const brand = {
     notifMsg: '',
     title: "LET's WHALE - Assure your allocation in next IDOs",
     site: '@LetsWhale',
+    creator: '@ebrjose',
   },
 }
 

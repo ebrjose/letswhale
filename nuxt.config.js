@@ -40,13 +40,13 @@ module.exports = {
       // Twitter
       { property: 'twitter:site', content: brand.saas.site },
       { property: 'twitter:domain', content: brand.saas.url },
-      { property: 'twitter:creator', content: brand.saas.url },
+      { property: 'twitter:creator', content: brand.saas.creator },
       { property: 'twitter:card', content: 'summary' },
       { property: 'twitter:image:src', content: brand.saas.img },
-      { property: 'twitter:title', content: brand.saas.title },
+      { name: 'twitter:title', content: brand.saas.title },
       { name: 'twitter:site', content: brand.saas.url },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: brand.saas.site },
+      { name: 'twitter:image', content: brand.saas.img },
     ],
     link: [
       // Favicon
