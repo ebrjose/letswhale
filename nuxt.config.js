@@ -16,6 +16,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'title', content: brand.saas.title },
       { name: 'description', content: brand.saas.desc },
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
       {
@@ -25,25 +26,27 @@ module.exports = {
       // PWA primary color
       { name: 'theme-color', content: theme.primary },
       // Facebook
-      { property: 'author', content: 'luxi' },
+      { property: 'author', content: 'letswhale.com' },
       { property: 'og:site_name', content: 'letswhale.com' },
       { property: 'og:locale', content: 'en_US' },
       { property: 'og:type', content: 'website' },
-      // Twitter
-      { property: 'twitter:site', content: 'letswhale.com' },
-      { property: 'twitter:domain', content: 'letswhale.com' },
-      { property: 'twitter:creator', content: 'letswhale.com' },
-      { property: 'twitter:card', content: 'summary' },
-      { property: 'twitter:image:src', content: '/images/sass-logo.png' },
       { property: 'og:url', content: brand.saas.url },
-      { property: 'og:title', content: brand.saas.projectName },
+      { property: 'og:title', content: brand.saas.title },
       { property: 'og:description', content: brand.saas.desc },
+      { property: 'og:image', content: brand.saas.img },
+      { property: 'og:image:width', content: '724' },
+      { property: 'og:image:height', content: '380' },
+
+      // Twitter
+      { property: 'twitter:site', content: brand.saas.site },
+      { property: 'twitter:domain', content: brand.saas.url },
+      { property: 'twitter:creator', content: brand.saas.url },
+      { property: 'twitter:card', content: 'summary' },
+      { property: 'twitter:image:src', content: brand.saas.img },
+      { property: 'twitter:title', content: brand.saas.title },
       { name: 'twitter:site', content: brand.saas.url },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: brand.saas.img },
-      { property: 'og:image', content: brand.saas.img },
-      { property: 'og:image:width', content: '1200' },
-      { property: 'og:image:height', content: '630' },
+      { name: 'twitter:image', content: brand.saas.site },
     ],
     link: [
       // Favicon
