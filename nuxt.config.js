@@ -26,15 +26,15 @@ module.exports = {
       { name: 'theme-color', content: theme.primary },
       // Facebook
       { property: 'author', content: 'luxi' },
-      { property: 'og:site_name', content: 'luxi.ux-maestro.com' },
+      { property: 'og:site_name', content: 'letswhale.com' },
       { property: 'og:locale', content: 'en_US' },
       { property: 'og:type', content: 'website' },
       // Twitter
-      { property: 'twitter:site', content: 'luxi.ux-maestro.com' },
-      { property: 'twitter:domain', content: 'luxi.ux-maestro.com' },
-      { property: 'twitter:creator', content: 'luxi' },
+      { property: 'twitter:site', content: 'letswhale.com' },
+      { property: 'twitter:domain', content: 'letswhale.com' },
+      { property: 'twitter:creator', content: 'letswhale.com' },
       { property: 'twitter:card', content: 'summary' },
-      { property: 'twitter:image:src', content: '/images/logo.png' },
+      { property: 'twitter:image:src', content: '/images/sass-logo.png' },
       { property: 'og:url', content: brand.saas.url },
       { property: 'og:title', content: brand.saas.projectName },
       { property: 'og:description', content: brand.saas.desc },
@@ -47,7 +47,7 @@ module.exports = {
     ],
     link: [
       // Favicon
-      { rel: 'shortcut icon', href: '/favicons/favicon.ico' },
+      { rel: 'shortcut icon', href: '/favicons/favicon.png' },
       {
         rel: 'apple-touch-icon',
         sizes: '57x57',
