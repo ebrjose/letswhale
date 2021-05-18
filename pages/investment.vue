@@ -14,7 +14,7 @@ export default {
   },
   head() {
     return {
-      title: brand.saas.name + ' - Deposit',
+      title: brand.saas.name + ' - Investment',
     }
   },
 }

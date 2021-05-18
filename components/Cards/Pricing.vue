@@ -18,7 +18,7 @@
         :color="type === 'basic' ? 'secondary' : 'primary'"
         class="button"
         large
-        to="/deposit"
+        to="/investment"
       >
         GET STARTED
       </v-btn>

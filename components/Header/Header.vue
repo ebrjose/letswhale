@@ -95,7 +95,7 @@
                   </v-btn>
                 </li>
                 <li>
-                  <v-btn text to="/deposit" > {{ $t('saasLanding.header_deposit') }} </v-btn>
+                  <v-btn text to="/investment" > {{ $t('saasLanding.header_deposit') }} </v-btn>
                 </li>
               </scrollactive>
             </div>

@@ -30,7 +30,7 @@
                 {{ $t('saasLanding.banner_btn_nexticos') }}
               </v-btn>
               <v-btn
-              to="/deposit"
+              to="/investment"
                 color="secondary"
                 large
               >

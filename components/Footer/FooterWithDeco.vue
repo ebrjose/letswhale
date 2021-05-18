@@ -12,7 +12,7 @@
       <h4 class="use-text-title2">
         {{ $t('saasLanding.footer_waiting') }}
       </h4>
-      <v-btn to="/deposit" color="secondary" large>
+      <v-btn to="/investment" color="secondary" large>
         {{ $t('saasLanding.banner_btn_getstarted') }}
       </v-btn>
     </div>

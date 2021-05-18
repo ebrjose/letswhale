@@ -22,7 +22,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
-          to="/deposit"
+          to="/investment"
           :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
           link
         >

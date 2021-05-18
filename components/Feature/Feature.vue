@@ -65,7 +65,7 @@
                     <p>{{ $t('saasLanding.feature_desc1_2') }}</p>
                     <p><strong>{{ $t('saasLanding.feature_desc1_3') }}</strong></p>
                   </h6>
-                  <v-btn to="/deposit" color="primary" large class="btn">
+                  <v-btn to="/investment" color="primary" large class="btn">
                     {{ $t('saasLanding.banner_btn_getstarted') }}
                   </v-btn>
                 </div>
