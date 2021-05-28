@@ -1,6 +1,12 @@
-import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT } from './constants'
+import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, MINIMUM_INVESTMENT } from './constants'
 import { dec2weihex, weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
+
+import { web3js, getERC20TokenContract } from '~/assets/utils/web3'
+
+function isValidBalance(balance) {
+  return balance / 10 ** 18 >= MINIMUM_INVESTMENT
+}
 
 export const state = () => ({
   account: null,
@@ -9,6 +15,9 @@ export const state = () => ({
   totalSent: null,
   isMetaMask: false,
   walletAccount: WALLET_ACCOUNT,
+  busdBalance: null,
+  busdContractAddress: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
+  busdDecimals: 18,
 })
 
 export const getters = {
@@ -23,6 +32,9 @@ export const getters = {
   },
   humanBalance(state) {
     return state.balance ? weihex2dec(state.balance).toFixed(4) : 0
+  },
+  humanBusdBalance(state) {
+    return state.busdBalance ? (state.busdBalance / 10 ** state.busdDecimals).toFixed(2) : 0
   },
   wrongNetwork(state) {
     return state.chainId !== CHAINID
@@ -54,6 +66,9 @@ export const mutations = {
   },
   SET_BALANCE(state, balance) {
     state.balance = balance
+  },
+  SET_BUSD_BALANCE(state, balance) {
+    state.busdBalance = balance
   },
   SET_TOTAL_INVESTED(state, totalSent) {
     state.totalSent = totalSent
@@ -96,19 +111,36 @@ export const actions = {
   },
   changeEthereumChain({ dispatch }) {
     ethereum
-      .request({
-        method: 'wallet_addEthereumChain',
-        params: [ETHEREUM_CHAIN[CHAINID]],
-      })
+      .request({ method: 'wallet_addEthereumChain', params: [ETHEREUM_CHAIN[CHAINID]] })
       .then(() => {
         dispatch('getAccount')
       })
       .catch(error => console.log(error))
   },
-  async getWalletBalance({ state, commit }) {
+  async getWalletBalance({ dispatch }) {
+    return await dispatch('getBUSDTokenBalance')
+  },
+  async getBNBTokenBalance({ state, commit }) {
     const account = state.account
     const balance = await ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] })
     commit('SET_BALANCE', balance)
+    return balance
+  },
+  async getBUSDTokenBalance({ state, commit }) {
+    const minABI = [
+      {
+        constant: true,
+        inputs: [{ name: '_owner', type: 'address' }],
+        name: 'balanceOf',
+        outputs: [{ name: 'balance', type: 'uint256' }],
+        type: 'function',
+      },
+      { constant: true, inputs: [], name: 'decimals', outputs: [{ name: '', type: 'uint8' }], type: 'function' },
+    ]
+
+    const contract = new web3js.eth.Contract(minABI, state.busdContractAddress)
+    const balance = await contract.methods.balanceOf(state.account).call((error, balance) => balance)
+    commit('SET_BUSD_BALANCE', balance)
     return balance
   },
   async getInvestedAmount({ state, commit }) {
@@ -126,7 +158,7 @@ export const actions = {
     commit('SET_CHAINID', chainId)
   },
   async fetchWalletBalance({ state, dispatch }) {
-    const oldBalance = state.balance
+    const oldBalance = state.busdBalance
     const newBalance = await dispatch('getWalletBalance')
     if (newBalance === oldBalance) {
       setTimeout(function() {
@@ -134,32 +166,76 @@ export const actions = {
       }, 5000)
     }
   },
-  async sendTransaction({ state }, amount) {
-    const params = {
-      from: state.metamask.account,
-      to: '0xc6e675854dce5bc61c7b7af049f0d28f99d34a84', // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
-      // gas: '0x5208', // 30400
-      // gasPrice: '0x0', // 10000000000000
-      value: dec2weihex(this.amount), // 6250000000000000000 wei -> HEX
-      // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
-    }
-    try {
-      const transaction = await ethereum.request({ method: 'eth_sendTransaction', params: [params] })
+  async sendBUSDTransaction({ state, dispatch }, decimalAmount) {
+    const balance = await dispatch('getWalletBalance')
+    // if (!isValidBalance(balance)) {
+    //   alert(`Your wallet balance must be greater than "${MINIMUM_INVESTMENT} BUSD"`)
+    //   return
+    // }
 
-      const dataTransaction = {
-        accountHash: params.from,
-        transactionHash: transaction,
-        amountHex: params.value,
-        amountDec: amount,
-      }
-      this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-        this.getInvestedAmount()
-        this.fetchWalletBalance()
-        this.$router.push('/')
-        this.snackbar = true
-      })
-    } catch (error) {
-      console.log('sendTransaction -> error', error)
-    }
+    const account = state.account
+    const toAddress = state.walletAccount
+    const busdDecimals = state.busdDecimals
+    const tokenContractAddress = state.busdContractAddress
+
+    const amount = web3js.utils.toBN(decimalAmount)
+    const decimals = web3js.utils.toBN(busdDecimals)
+    const sendValue = amount.mul(web3js.utils.toBN(10).pow(decimals))
+    const tokenContract = getERC20TokenContract(tokenContractAddress)
+
+    // https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#
+
+    return new Promise((resolve, reject) => {
+      tokenContract.methods
+        .transfer(toAddress, sendValue)
+        .send({
+          from: account,
+        })
+        .on('transactionHash', function(hash) {
+          console.log('.on -> hash', hash)
+          const dataTransaction = {
+            accountHash: account,
+            transactionHash: hash,
+            amountHex: 'BUSD',
+            amountDec: decimalAmount,
+          }
+          resolve(dataTransaction)
+        })
+        .on('receipt', function(receipt) {
+          console.log('.on -> receipt', receipt)
+        })
+        .on('error', function(error) {
+          console.log('.on -> error', error)
+          reject(error)
+        })
+    })
   },
+  // async sendTransaction() {
+  //   const params = {
+  //     from: this.$store.state.metamask.account,
+  //     to: this.$store.state.metamask.walletAccount, // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
+  //     // gas: '0x5208', // 30400
+  //     // gasPrice: '0x0', // 10000000000000
+  //     value: dec2weihex(this.amount),
+  //   } // 6250000000000000000 wei -> HEX
+  //   // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee', BUSD token
+  //   try {
+  //     const transaction = await ethereum.request({ method: 'eth_sendTransaction', params: [params] })
+
+  //     const dataTransaction = {
+  //       accountHash: params.from,
+  //       transactionHash: transaction,
+  //       amountHex: params.value,
+  //       amountDec: this.amount,
+  //     }
+  //     this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
+  //       this.getInvestedAmount()
+  //       this.fetchWalletBalance()
+  //       this.$router.push('/')
+  //       this.snackbar = true
+  //     })
+  //   } catch (error) {
+  //     console.log('sendTransaction -> error', error)
+  //   }
+  // },
 }

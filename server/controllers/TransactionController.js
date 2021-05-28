@@ -1,5 +1,4 @@
 import { Transaction } from '../db/models'
-import { dec2weihex, weihex2dec } from '../../assets/utils/number'
 export async function getTransactions(req, res, next) {
   try {
     const transactions = await Transaction.findAll()
@@ -36,7 +35,7 @@ export async function transactionsSent(req, res) {
     const transactions = await Transaction.findAll({ where: { accountHash: account } })
     let total = 0
     transactions.forEach(it => {
-      total += weihex2dec(it.amountHex)
+      total += it.amountDec / 1
     })
     res.json({ totalSent: total })
   } catch (error) {

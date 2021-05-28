@@ -18,3 +18,5 @@ export const ETHEREUM_CHAIN = {
 }
 
 export const WALLET_ACCOUNT = process.env.WALLET_ACCOUNT
+export const MINIMUM_INVESTMENT = process.env.MINIMUM_INVESTMENT
+export const MAXIMUM_INVESTMENT = process.env.MAXIMUM_INVESTMENT

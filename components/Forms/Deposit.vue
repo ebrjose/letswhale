@@ -69,10 +69,10 @@
                 <v-col cols="12" sm="6" class="px-6">
                   <v-text-field
                     class="input light"
-                    :value="humanBalance"
+                    :value="humanBusdBalance"
                     label="Total Balance"
                     color="white"
-                    suffix="BNB"
+                    suffix="BUSD"
                     readonly
                     filled
                   />
@@ -84,7 +84,7 @@
                     class="input light"
                     label="Investment Amount"
                     color="white"
-                    suffix="BNB"
+                    suffix="BUSD"
                     filled
                     autofocus
                     required
@@ -140,8 +140,9 @@ import link from '~/static/text/link'
 import Hidden from '../Hidden'
 import Metamask from '~/components/Metamask'
 
+import { MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from '~/store/constants'
+
 import { mapGetters, mapActions } from 'vuex'
-import { dec2weihex } from '~/assets/utils/number'
 
 export default {
   layout: 'default',
@@ -155,8 +156,9 @@ export default {
       snackbar: false,
       amountRules: [
         v => !!v || 'Amount is required',
-        v => /^[0-9]+(\.[0-9]{1,4})?$/.test(v) || 'Amount must be have a valid format e.g. 1.234',
-        v => v >= 1.6 || 'The minimum investment is 1.6 BNB',
+        // v => /^[0-9]{4,5}$/.test(v) || 'Amount must be have a valid format e.g. 1234',
+        // v => v >= MINIMUM_INVESTMENT || 'The minimum investment is 1000 BUSD',
+        // v => v <= MAXIMUM_INVESTMENT || 'The maximum investment is 10000 BUSD',
       ],
       emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
       checkbox: false,
@@ -168,45 +170,27 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'wrongNetwork']),
+    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'wrongNetwork']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1
     },
   },
   methods: {
-    ...mapActions('metamask', ['connectWallet', 'fetchWalletBalance', 'getInvestedAmount']),
-    async sendTransaction() {
-      const params = {
-        from: this.$store.state.metamask.account,
-        to: this.$store.state.metamask.walletAccount,
-        // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
-        // gas: '0x5208', // 30400
-        // gasPrice: '0x0', // 10000000000000
-        value: dec2weihex(this.amount), // 6250000000000000000 wei -> HEX
-        // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
-      }
-      try {
-        const transaction = await ethereum.request({
-          method: 'eth_sendTransaction',
-          params: [params],
+    ...mapActions('metamask', ['connectWallet', 'fetchWalletBalance', 'getInvestedAmount', 'sendBUSDTransaction']),
+    sendTransaction() {
+      this.sendBUSDTransaction(this.amount)
+        .then(dataTransaction => {
+          this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
+            this.getInvestedAmount()
+            this.fetchWalletBalance()
+            this.$router.push('/')
+            this.snackbar = true
+          })
         })
-
-        const dataTransaction = {
-          accountHash: params.from,
-          transactionHash: transaction,
-          amountHex: params.value,
-          amountDec: this.amount,
-        }
-        this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-          this.getInvestedAmount()
-          this.fetchWalletBalance()
-          this.$router.push('/')
-          this.snackbar = true
+        .catch(error => {
+          console.log('sendTransaction -> error', error)
         })
-      } catch (error) {
-        console.log('sendTransaction -> error', error)
-      }
     },
     validate() {
       if (this.$refs.form.validate()) {
