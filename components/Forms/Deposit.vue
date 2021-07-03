@@ -91,8 +91,8 @@
                   />
                 </v-col>
               </v-row>
-              <div class="btn-area flex">
-                <div class="form-control-label">
+              <div class="mt-10 d-flex justify-space-between">
+                <div class="form-control-label pt-2">
                   <v-checkbox
                     v-model="checkbox"
                     color="secondary"
@@ -108,8 +108,19 @@
                   color="secondary"
                   @click="validate"
                   large
+                  :loading="transactionLoading"
+                  :disabled="transactionLoading"
                 >
                   MAKE A DEPOSIT
+                  <template v-slot:loader>
+                    <span class="white--text">
+                      <v-progress-circular
+                        indeterminate
+                        color="red"
+                      />
+                      Please Wait...
+                    </span>
+                  </template>
                 </v-btn>
               </div>
             </v-form>
@@ -144,6 +155,8 @@ import { MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from '~/store/constants'
 
 import { mapGetters, mapActions } from 'vuex'
 
+// import { web3js } from '~/assets/utils/web3'
+
 export default {
   layout: 'default',
   components: {
@@ -156,9 +169,9 @@ export default {
       snackbar: false,
       amountRules: [
         v => !!v || 'Amount is required',
-        // v => /^[0-9]{4,5}$/.test(v) || 'Amount must be have a valid format e.g. 1234',
-        // v => v >= MINIMUM_INVESTMENT || 'The minimum investment is 1000 BUSD',
-        // v => v <= MAXIMUM_INVESTMENT || 'The maximum investment is 10000 BUSD',
+        v => /^[0-9]{4,5}$/.test(v) || 'Amount must be have a valid format e.g. 1000',
+        v => v >= MINIMUM_INVESTMENT || `The minimum investment is ${MINIMUM_INVESTMENT} BUSD`,
+        v => v <= MAXIMUM_INVESTMENT || `The maximum investment is ${MAXIMUM_INVESTMENT} BUSD`,
       ],
       emailRules: [v => !!v || 'E-mail is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
       checkbox: false,
@@ -167,6 +180,7 @@ export default {
       routeLink: link,
       account: this.$store.state.metamask.account,
       amount: null,
+      transactionLoading: false,
     }
   },
   computed: {
@@ -179,23 +193,30 @@ export default {
   methods: {
     ...mapActions('metamask', ['connectWallet', 'fetchWalletBalance', 'getInvestedAmount', 'sendBUSDTransaction']),
     sendTransaction() {
+      this.transactionLoading = true
       this.sendBUSDTransaction(this.amount)
         .then(dataTransaction => {
-          this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-            this.getInvestedAmount()
-            this.fetchWalletBalance()
-            this.$router.push('/')
-            this.snackbar = true
-          })
+          this.saveTransaction(dataTransaction)
         })
         .catch(error => {
           console.log('sendTransaction -> error', error)
+        })
+        .finally(() => {
+          this.transactionLoading = false
         })
     },
     validate() {
       if (this.$refs.form.validate()) {
         this.sendTransaction()
       }
+    },
+    saveTransaction(dataTransaction) {
+      this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
+        this.getInvestedAmount()
+        this.fetchWalletBalance()
+        this.$router.push('/')
+        this.snackbar = true
+      })
     },
   },
 }

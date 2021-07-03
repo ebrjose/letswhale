@@ -1,4 +1,4 @@
-import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, MINIMUM_INVESTMENT } from './constants'
+import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from './constants'
 import { dec2weihex, weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
 
@@ -186,56 +186,26 @@ export const actions = {
     // https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#
 
     return new Promise((resolve, reject) => {
+      let dataTransaction
       tokenContract.methods
         .transfer(toAddress, sendValue)
-        .send({
-          from: account,
-        })
+        .send({ from: account })
         .on('transactionHash', function(hash) {
-          console.log('.on -> hash', hash)
-          const dataTransaction = {
+          dataTransaction = {
             accountHash: account,
             transactionHash: hash,
             amountHex: 'BUSD',
             amountDec: decimalAmount,
           }
-          resolve(dataTransaction)
         })
-        .on('receipt', function(receipt) {
-          console.log('.on -> receipt', receipt)
+        .on('confirmation', function(confirmationNumber, receipt) {
+          if (receipt.status) {
+            resolve(dataTransaction)
+          }
         })
         .on('error', function(error) {
-          console.log('.on -> error', error)
           reject(error)
         })
     })
   },
-  // async sendTransaction() {
-  //   const params = {
-  //     from: this.$store.state.metamask.account,
-  //     to: this.$store.state.metamask.walletAccount, // from: '0x7e9a738F691049fDD0B737F5E8155D22CA5C54aA',
-  //     // gas: '0x5208', // 30400
-  //     // gasPrice: '0x0', // 10000000000000
-  //     value: dec2weihex(this.amount),
-  //   } // 6250000000000000000 wei -> HEX
-  //   // data: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee', BUSD token
-  //   try {
-  //     const transaction = await ethereum.request({ method: 'eth_sendTransaction', params: [params] })
-
-  //     const dataTransaction = {
-  //       accountHash: params.from,
-  //       transactionHash: transaction,
-  //       amountHex: params.value,
-  //       amountDec: this.amount,
-  //     }
-  //     this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-  //       this.getInvestedAmount()
-  //       this.fetchWalletBalance()
-  //       this.$router.push('/')
-  //       this.snackbar = true
-  //     })
-  //   } catch (error) {
-  //     console.log('sendTransaction -> error', error)
-  //   }
-  // },
 }

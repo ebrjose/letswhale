@@ -8,7 +8,7 @@ const app = express()
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://letswhale.com', 'https://letswhale.com'],
 }
-app.use(cors())
+app.use(cors(corsOptions))
 
 sequelize.sync()
 
