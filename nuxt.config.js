@@ -306,5 +306,10 @@ module.exports = {
   /**
    * API
    */
+  env: {
+    minimum: process.env.MINIMUM_INVESTMENT,
+    maximum: process.env.MAXIMUM_INVESTMENT,
+  },
+
   serverMiddleware: [{ path: '/api', handler: '~/server/index.js' }],
 }

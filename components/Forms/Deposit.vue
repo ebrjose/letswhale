@@ -151,11 +151,10 @@ import link from '~/static/text/link'
 import Hidden from '../Hidden'
 import Metamask from '~/components/Metamask'
 
-import { MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from '~/store/constants'
-
 import { mapGetters, mapActions } from 'vuex'
 
-// import { web3js } from '~/assets/utils/web3'
+const MINIMUM_INVESTMENT = parseInt(process.env.minimum)
+const MAXIMUM_INVESTMENT = parseInt(process.env.maximum)
 
 export default {
   layout: 'default',
@@ -169,7 +168,7 @@ export default {
       snackbar: false,
       amountRules: [
         v => !!v || 'Amount is required',
-        v => /^[0-9]{4,5}$/.test(v) || 'Amount must be have a valid format e.g. 1000',
+        v => /^[0-9]{0,5}$/.test(v) || 'Amount must be have a valid format e.g. 1000',
         v => v >= MINIMUM_INVESTMENT || `The minimum investment is ${MINIMUM_INVESTMENT} BUSD`,
         v => v <= MAXIMUM_INVESTMENT || `The maximum investment is ${MAXIMUM_INVESTMENT} BUSD`,
       ],
