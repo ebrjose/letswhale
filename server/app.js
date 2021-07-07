@@ -10,8 +10,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-sequelize.sync()
-
 app.use(json())
 app.use('/transactions', transactionRoutes)
 

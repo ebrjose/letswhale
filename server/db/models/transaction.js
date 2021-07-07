@@ -15,8 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       accountHash: { type: DataTypes.STRING, allowNull: false },
       transactionHash: { type: DataTypes.STRING, allowNull: false },
+      token: { type: DataTypes.STRING, allowNull: false },
       amountHex: { type: DataTypes.STRING, allowNull: false },
       amountDec: { type: DataTypes.DECIMAL(10, 4), allowNull: false },
+      status: { type: DataTypes.ENUM('pending', 'success', 'error'), allowNull: false },
     },
     { sequelize, modelName: 'Transaction' }
   )
