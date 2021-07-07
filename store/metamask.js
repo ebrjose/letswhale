@@ -186,26 +186,38 @@ export const actions = {
     // https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#
 
     return new Promise((resolve, reject) => {
-      let dataTransaction
+      let transactionHash
+      let timer = null
       tokenContract.methods
         .transfer(toAddress, sendValue)
         .send({ from: account })
         .on('transactionHash', function(hash) {
-          dataTransaction = {
+          transactionHash = hash
+          const dataTransaction = {
             accountHash: account,
             transactionHash: hash,
-            amountHex: 'BUSD',
+            token: 'BUSD',
             amountDec: decimalAmount,
           }
+          resolve(dataTransaction)
         })
         .on('confirmation', function(confirmationNumber, receipt) {
-          if (receipt.status) {
-            resolve(dataTransaction)
+          if (confirmationNumber === 1) {
+            dispatch('confirmTransaction', { transactionHash, receipt })
           }
         })
         .on('error', function(error) {
           reject(error)
         })
     })
+  },
+  async confirmTransaction({ dispatch }, { transactionHash, receipt }) {
+    try {
+      await this.$axios.put(`/api/transactions/${transactionHash}`, receipt)
+      await dispatch('getInvestedAmount')
+      await dispatch('fetchWalletBalance')
+    } catch (error) {
+      //error
+    }
   },
 }

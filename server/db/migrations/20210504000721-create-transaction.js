@@ -11,11 +11,11 @@ module.exports = {
       accountHash: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       transactionHash: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       token: {
         type: Sequelize.STRING,
@@ -23,7 +23,7 @@ module.exports = {
       },
       amountHex: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       amountDec: {
         type: Sequelize.DECIMAL(10, 4),

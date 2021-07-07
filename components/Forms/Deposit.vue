@@ -168,7 +168,7 @@ export default {
       snackbar: false,
       amountRules: [
         v => !!v || 'Amount is required',
-        v => /^[0-9]{0,5}$/.test(v) || 'Amount must be have a valid format e.g. 1000',
+        v => /^[0-9]{1,5}$/.test(v) || 'Amount must be have a valid format e.g. 1000',
         v => v >= MINIMUM_INVESTMENT || `The minimum investment is ${MINIMUM_INVESTMENT} BUSD`,
         v => v <= MAXIMUM_INVESTMENT || `The maximum investment is ${MAXIMUM_INVESTMENT} BUSD`,
       ],
@@ -211,8 +211,6 @@ export default {
     },
     saveTransaction(dataTransaction) {
       this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-        this.getInvestedAmount()
-        this.fetchWalletBalance()
         this.$router.push('/')
         this.snackbar = true
       })
