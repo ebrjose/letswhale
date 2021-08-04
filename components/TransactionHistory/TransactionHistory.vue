@@ -5,6 +5,8 @@
       :headers="headers"
       :items="items"
       :items-per-page="5"
+      :sort-by="['createdAt']"
+      :sort-desc="true"
       class="elevation-1"
       :footer-props="{
         showFirstLastPage: true,
@@ -69,19 +71,25 @@ export default {
         {
           text: 'Txn Hash',
           value: 'transactionHash',
+          align: 'center',
+          sortable: false,
         },
         {
           text: 'Date',
           value: 'createdAt',
-          align: 'center',
+          align: 'end',
         },
         {
           text: 'From',
           value: 'accountHash',
+          align: 'center',
+          sortable: false,
         },
         {
           text: 'Coin',
           value: 'token',
+          align: 'center',
+          sortable: false,
         },
         {
           text: 'Amount',
