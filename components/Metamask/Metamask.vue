@@ -4,11 +4,11 @@
       <div class="wallet-data">
         <div class="label">
           Balance:
-          <span class="amount">{{ humanBalance }} BNB</span>
+          <span class="amount">{{ humanBusdBalance }} BUSD</span>
         </div>
         <div class="label">
           Invested:
-          <span class="amount">{{ totalInvested }} BNB</span>
+          <span class="amount">{{ totalInvested }} BUSD</span>
         </div>
       </div>
       <v-menu  offset-y>
@@ -24,17 +24,18 @@
             <span class="d-none d-sm-flex"> {{ accountShorted }} </span>
           </v-btn>
         </template>
-        <v-list dense>
-          <v-list-item>
-            <v-list-item-content class="text-center" @click="disconnectWallet">
-              <v-list-item-title>Disconnect</v-list-item-title>
-            </v-list-item-content>
+        <v-list dense class="text-center">
+          <v-list-item link to="/transaction-history">
+            <v-list-item-title>Transaction History</v-list-item-title>
+          </v-list-item>
+          <v-list-item link  @click="disconnectWallet()">
+            <v-list-item-title>Disconnect</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </fragment>
     <fragment v-else>
-      <template  v-if="wrongNetwork">
+      <template v-if="wrongNetwork">
         <v-btn color="primary" @click="connectWallet" class="mr-1 red--text text--accent-2 font-weight-bold">
           <v-icon>mdi-alert-octagon-outline</v-icon> &nbsp; &nbsp;
           WRONG NETWORK
@@ -58,7 +59,7 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-right: -25px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   .label {
@@ -84,7 +85,7 @@ export default {
     // DialogMetamask,
   },
   computed: {
-    ...mapGetters('metamask', ['humanBalance', 'loggedIn', 'accountShorted', 'wrongNetwork', 'totalInvested']),
+    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'accountShorted', 'wrongNetwork', 'totalInvested']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1

@@ -15,13 +15,23 @@ module.exports = {
       transactionHash: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
-      amountHex: {
+      token: {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      amountHex: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       amountDec: {
         type: Sequelize.DECIMAL(10, 4),
+        allowNull: false,
+      },
+      status: {
+        type: Sequelize.ENUM('pending', 'success', 'error'),
+        defaultValue: 'pending',
         allowNull: false,
       },
       createdAt: {

@@ -36,35 +36,12 @@
               </span>
             </v-btn>
             <div class="logo">
-              <nuxt-link
-                v-if="invert"
-                :to="link.saas.home"
-              >
+              <nuxt-link to="/" >
                 <img
                   :src="logo"
                   alt="logo"
                 >
-                <!-- <span v-if="!isMobile">
-                  {{ brand.saas.name }}
-                </span> -->
               </nuxt-link>
-              <scrollactive
-                v-if="!invert && loaded"
-                tag="span"
-              >
-                <a
-                  href="#home"
-                  class="anchor-link scrollactive-item"
-                >
-                  <img
-                    :src="logo"
-                    alt="logo"
-                  >
-                  <!-- <span v-if="!isMobile">
-                    {{ brand.saas.name }}
-                  </span> -->
-                </a>
-              </scrollactive>
             </div>
             <div v-if="isDesktop">
               <scrollactive
@@ -73,27 +50,6 @@
                 active-class="active"
                 tag="ul"
               >
-                <li
-                  v-for="(item, index) in menuList"
-                  :key="index"
-                >
-                  <v-btn
-                    v-if="!invert"
-                    :href="item.url"
-                    class="anchor-link scrollactive-item"
-                    text
-                    @click="setOffset(item.offset)"
-                  >
-                    {{ $t('saasLanding.header_'+item.name) }}
-                  </v-btn>
-                  <v-btn
-                    v-if="invert"
-                    :href="'/' + item.url"
-                    text
-                  >
-                    {{ $t('saasLanding.header_'+item.name) }}
-                  </v-btn>
-                </li>
                 <li>
                   <v-btn text to="/investment" > {{ $t('saasLanding.header_deposit') }} </v-btn>
                 </li>

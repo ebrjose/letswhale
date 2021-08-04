@@ -9,19 +9,6 @@
         tag="nav"
       >
         <v-list-item
-          v-for="(item, index) in navMenu"
-          :key="index"
-          :href="'#' + item"
-          link
-          :style="{ animationDuration: index * 0.15 + 's' }"
-        >
-          <v-list-item-content>
-            <v-list-item-title class="menu-list">
-              {{ $t('saasLanding.header_'+item) }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item
           to="/investment"
           :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
           link

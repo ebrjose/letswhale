@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="root-banner">
     <div class="decoration">
       <svg class="left-deco">
         <use xlink:href="/images/saas/deco-bg-left.svg#main" />
@@ -8,43 +8,12 @@
         <use xlink:href="/images/saas/deco-bg-right.svg#main" />
       </svg>
     </div>
-    <v-container :class="{ fixed: isDesktop, 'container-wrap':true }">
-      <v-row>
-        <v-col cols="12" md="6">
-          <div class="text">
-            <h3 class="use-text-title">
-              {{ $t('saasLanding.banner_title') }}
-              <strong>
-                {{ $t('saasLanding.banner_titlestrong') }}
-              </strong>
-            </h3>
-            <p class="use-text-subtitle">
-              {{ $t('saasLanding.banner_subtitle') }}
-            </p>
-            <div class="btn-area">
-              <v-btn
-                href="#next"
-                color="primary mr-4"
-                large
-              >
-                {{ $t('saasLanding.banner_btn_nexticos') }}
-              </v-btn>
-              <v-btn
-              to="/investment"
-                color="secondary"
-                large
-              >
-                {{ $t('saasLanding.banner_btn_getstarted') }}
-              </v-btn>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="12" md="6">
-          <div class="illustration">
-            <Particle />
-          </div>
-        </v-col>
-      </v-row>
+    <v-container>
+      <div class="text">
+        <h3 class="use-text-title">
+          {{ title }}
+        </h3>
+      </div>
     </v-container>
 
     <div class="deco">
@@ -66,6 +35,12 @@ import Hidden from '../Hidden'
 import Particle from '~/components/Animations/Particle'
 
 export default {
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
     Hidden,
     Particle,
@@ -99,5 +74,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './banner-style.scss';
+@import './page-banner-style.scss';
 </style>

@@ -1,6 +1,5 @@
 import { Transaction } from '../db/models'
-import { dec2weihex, weihex2dec } from '../../assets/utils/number'
-export async function getTransactions(req, res, next) {
+export async function getTransactions(req, res) {
   try {
     const transactions = await Transaction.findAll()
     res.json({
@@ -12,13 +11,14 @@ export async function getTransactions(req, res, next) {
 }
 
 export async function createTransaction(req, res) {
-  const { accountHash, transactionHash, amountHex, amountDec } = req.body
+  const { accountHash, transactionHash, token, amountDec, status = 'pending' } = req.body
   try {
     const transaction = await Transaction.create({
       accountHash,
       transactionHash,
-      amountHex,
+      token,
       amountDec,
+      status,
     })
 
     res.json({
@@ -30,15 +30,43 @@ export async function createTransaction(req, res) {
   }
 }
 
+export async function confirmTransaction(req, res) {
+  const { transactionHash } = req.params
+  const { status } = req.body
+  const transactionStatus = status ? 'success' : 'error'
+
+  try {
+    const transaction = await Transaction.findOne({ where: { transactionHash: transactionHash } })
+    transaction.status = transactionStatus
+    await transaction.save()
+
+    res.json({
+      message: 'Transaction status has been updated',
+    })
+  } catch (error) {
+    res.status(500).json({ message: 'An error ocurred', error })
+  }
+}
+
 export async function transactionsSent(req, res) {
   const { account } = req.params
   try {
-    const transactions = await Transaction.findAll({ where: { accountHash: account } })
+    const transactions = await Transaction.findAll({ where: { accountHash: account, status: 'success' } })
     let total = 0
     transactions.forEach(it => {
-      total += weihex2dec(it.amountHex)
+      total += it.amountDec / 1
     })
     res.json({ totalSent: total })
+  } catch (error) {
+    res.status(500).json({ message: 'An error ocurred', error })
+  }
+}
+
+export async function transactionHistory(req, res) {
+  const { account } = req.params
+  try {
+    const history = await Transaction.findAll({ where: { accountHash: account } })
+    res.json({ history: history })
   } catch (error) {
     res.status(500).json({ message: 'An error ocurred', error })
   }
