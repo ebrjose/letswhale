@@ -1,5 +1,5 @@
 import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from './constants'
-import { dec2weihex, weihex2dec } from '~/assets/utils/number'
+import { weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
 
 import { web3js, getERC20TokenContract } from '~/assets/utils/web3'
@@ -18,6 +18,7 @@ export const state = () => ({
   busdBalance: null,
   busdContractAddress: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
   busdDecimals: 18,
+  blockExplorerUrl: null,
 })
 
 export const getters = {
@@ -56,6 +57,7 @@ export const mutations = {
   },
   SET_CHAINID(state, chainId) {
     state.chainId = chainId
+    state.blockExplorerUrl = ETHEREUM_CHAIN[chainId].blockExplorerUrls[0]
   },
   CLEAR_DATA(state) {
     state.account = null
@@ -187,7 +189,6 @@ export const actions = {
 
     return new Promise((resolve, reject) => {
       let transactionHash
-      let timer = null
       tokenContract.methods
         .transfer(toAddress, sendValue)
         .send({ from: account })
@@ -218,6 +219,15 @@ export const actions = {
       await dispatch('fetchWalletBalance')
     } catch (error) {
       //error
+    }
+  },
+  async transactionHistory({ state }) {
+    try {
+      const account = state.account
+      const { data } = await this.$axios.get(`/api/transactions/history/${account}`)
+      return data
+    } catch (error) {
+      throw error
     }
   },
 }

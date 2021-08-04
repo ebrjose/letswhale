@@ -1,44 +1,42 @@
 <template>
-  <div>
-    <div class="main-wrap">
-      <main-header />
-      <div class="container-wrap">
-        <section id="home">
-          <banner />
-        </section>
-
-        <section class="mt-5">
-          <company-logo />
-        </section>
-
-        <section :class="!isMobile && 'space-top-short'">
-          <headline />
-        </section>
-
-        <section id="earnings"  style="padding-top:50px">
-          <feature />
-        </section>
-
-        <section id="plan" style="padding-top:50px">
-          <pricing-plan />
-        </section>
-
-        <section id="last" style="padding-top:50px">
-          <last />
-        </section>
-
-        <section id="next" style="padding-top:150px">
-          <next />
-        </section>
-
-      </div>
-      <section id="footer">
-        <footer-with-deco />
+  <div class="main-wrap">
+    <main-header />
+    <div class="container-wrap">
+      <section id="home">
+        <banner />
       </section>
-      <hidden point="mdDown">
-        <page-nav />
-      </hidden>
+
+      <section class="mt-5">
+        <company-logo />
+      </section>
+
+      <section :class="!isMobile && 'space-top-short'">
+        <headline />
+      </section>
+
+      <section id="earnings"  style="padding-top:50px">
+        <feature />
+      </section>
+
+      <section id="plan" style="padding-top:50px">
+        <pricing-plan />
+      </section>
+
+      <section id="last" style="padding-top:50px">
+        <last />
+      </section>
+
+      <section id="next" style="padding-top:150px">
+        <next />
+      </section>
+
     </div>
+    <section id="footer">
+      <footer-with-deco />
+    </section>
+    <hidden point="mdDown">
+      <page-nav />
+    </hidden>
   </div>
 </template>
 

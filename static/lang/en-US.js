@@ -59,6 +59,7 @@ export default () => {
         header_last: 'last',
         header_next: 'next',
         header_deposit: 'deposit',
+        header_transaction_history: 'Transaction History',
         header_get_started: 'Get Started',
         banner_title: 'Assure your allocation in',
         banner_titlestrong: 'next IDOs',

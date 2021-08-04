@@ -124,7 +124,7 @@ module.exports = {
       // Fonts and Icons
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap',
+        href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700&display=swap',
       },
       {
         rel: 'stylesheet',
@@ -159,6 +159,7 @@ module.exports = {
     { src: '~/plugins/caroussel-config', ssr: false },
     { src: '~/plugins/countup-config', ssr: false },
     { src: '~/plugins/vue-scroll-nav', ssr: false },
+    { src: '~/plugins/filters', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

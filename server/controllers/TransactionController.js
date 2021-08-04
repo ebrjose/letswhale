@@ -1,5 +1,5 @@
 import { Transaction } from '../db/models'
-export async function getTransactions(req, res, next) {
+export async function getTransactions(req, res) {
   try {
     const transactions = await Transaction.findAll()
     res.json({
@@ -57,6 +57,16 @@ export async function transactionsSent(req, res) {
       total += it.amountDec / 1
     })
     res.json({ totalSent: total })
+  } catch (error) {
+    res.status(500).json({ message: 'An error ocurred', error })
+  }
+}
+
+export async function transactionHistory(req, res) {
+  const { account } = req.params
+  try {
+    const history = await Transaction.findAll({ where: { accountHash: account } })
+    res.json({ history: history })
   } catch (error) {
     res.status(500).json({ message: 'An error ocurred', error })
   }

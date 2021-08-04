@@ -6,7 +6,7 @@ export const ETHEREUM_CHAIN = {
     chainName: 'Binance Smart Chain',
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     rpcUrls: ['https://bsc-dataseed.binance.org/'],
-    blockExplorerUrls: ['https://bscscan.com/'],
+    blockExplorerUrls: ['https://bscscan.com'],
   },
   97: {
     chainId: '0x61',

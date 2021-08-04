@@ -24,17 +24,18 @@
             <span class="d-none d-sm-flex"> {{ accountShorted }} </span>
           </v-btn>
         </template>
-        <v-list dense>
-          <v-list-item>
-            <v-list-item-content class="text-center" @click="disconnectWallet">
-              <v-list-item-title>Disconnect</v-list-item-title>
-            </v-list-item-content>
+        <v-list dense class="text-center">
+          <v-list-item link to="/transaction-history">
+            <v-list-item-title>Transaction History</v-list-item-title>
+          </v-list-item>
+          <v-list-item link  @click="disconnectWallet()">
+            <v-list-item-title>Disconnect</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </fragment>
     <fragment v-else>
-      <template  v-if="wrongNetwork">
+      <template v-if="wrongNetwork">
         <v-btn color="primary" @click="connectWallet" class="mr-1 red--text text--accent-2 font-weight-bold">
           <v-icon>mdi-alert-octagon-outline</v-icon> &nbsp; &nbsp;
           WRONG NETWORK

@@ -6,6 +6,7 @@ import {
   createTransaction,
   confirmTransaction,
   transactionsSent,
+  transactionHistory,
 } from '../controllers/TransactionController'
 
 // /api/transactions
@@ -15,5 +16,6 @@ router.post('/', createTransaction)
 router.put('/:transactionHash/', confirmTransaction)
 
 router.get('/sent/:account', transactionsSent)
+router.get('/history/:account', transactionHistory)
 
 module.exports = router
