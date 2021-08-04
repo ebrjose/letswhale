@@ -30,7 +30,7 @@ export default {
 <style lang="scss">
 .page-content {
   background: white;
-  padding: spacing(5, 0, 5);
+  padding: spacing(8, 0, 0);
   min-height: 20vh;
 }
 </style>

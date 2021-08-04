@@ -1,13 +1,12 @@
 
 <template>
-  <v-container class="mb-5">
+  <v-container style="z-index: 81">
     <v-data-table
       :headers="headers"
       :items="items"
-      :items-per-page="5"
+      :items-per-page="10"
       :sort-by="['createdAt']"
       :sort-desc="true"
-      class="elevation-1"
       :footer-props="{
         showFirstLastPage: true,
         firstIcon: 'mdi-arrow-collapse-left',
