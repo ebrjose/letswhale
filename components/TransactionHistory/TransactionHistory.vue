@@ -3,7 +3,7 @@
   <v-container style="z-index: 81">
     <v-data-table
       :headers="headers"
-      :items="items"
+      :items="transactionHistory"
       :items-per-page="10"
       :sort-by="['createdAt']"
       :sort-desc="true"
@@ -18,7 +18,7 @@
       <template v-slot:[`item.transactionHash`]={item}>
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn text small color="secondary" :href="`${explorerUrl}/tx/${item.transactionHash}`" target="_blank"  v-bind="attrs" v-on="on">
+            <v-btn text small color="secondary" :href="`${blockExplorerUrl}/tx/${item.transactionHash}`" target="_blank"  v-bind="attrs" v-on="on">
               {{ item.transactionHash | shortToken }}
             </v-btn>
           </template>
@@ -26,14 +26,14 @@
         </v-tooltip>
       </template>
       <template v-slot:[`item.createdAt`]={item}>
-        <div>
+        <div :class="{ 'font-weight-bold': item.status === 'success',  'grey--text' : item.status === 'error'}">
           {{ item.createdAt | dateToLocale }}
         </div>
       </template>
       <template v-slot:[`item.accountHash`]={item}>
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn text small color="orange darken-2" :href="`${explorerUrl}/address/${item.accountHash}`" target="_blank"  v-bind="attrs" v-on="on">
+            <v-btn text small color="orange darken-2" :href="`${blockExplorerUrl}/address/${item.accountHash}`" target="_blank"  v-bind="attrs" v-on="on">
               {{ item.accountHash | shortToken }}
             </v-btn>
           </template>
@@ -46,13 +46,11 @@
         </v-btn>
       </template>
       <template v-slot:[`item.amountDec`]={item}>
-        <strong>
-          {{ item.amountDec | toDecimal }}
-        </strong>
+        <div :class="{ 'font-weight-bold': item.status === 'success',  'grey--text' : item.status === 'error'}"> {{ item.amountDec | toDecimal }} </div>
       </template>
       <template v-slot:[`item.status`]={item}>
         <div>
-            <v-icon v-if="item.status === 'pending'"> mdi-timelapse </v-icon>
+            <v-progress-circular v-if="item.status === 'pending'" size="20" width="2" indeterminate color="primary" />
             <v-icon v-if="item.status === 'success'" color="green"> mdi-check-circle-outline </v-icon>
             <v-icon v-if="item.status === 'error'" color="red">mdi-alert-circle-outline</v-icon>
         </div>
@@ -61,7 +59,7 @@
   </v-container>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data() {
@@ -101,31 +99,20 @@ export default {
           align: 'center',
         },
       ],
-      items: [],
     }
   },
   mounted() {
-    this.getHistory()
+    this.fetchTransactionHistory()
   },
   computed: {
-    explorerUrl() {
-      return this.$store.state.metamask.blockExplorerUrl
-    },
-    account() {
-      return this.$store.state.metamask.account
-    },
+    ...mapState('metamask', ['transactionHistory', 'blockExplorerUrl', 'account']),
   },
   methods: {
-    ...mapActions('metamask', ['transactionHistory']),
-
-    async getHistory() {
-      const { history } = await this.transactionHistory()
-      this.items = history
-    },
+    ...mapActions('metamask', ['fetchTransactionHistory']),
   },
   watch: {
     account() {
-      this.getHistory()
+      this.fetchTransactionHistory()
     },
   },
 }

@@ -210,8 +210,8 @@ export default {
       }
     },
     saveTransaction(dataTransaction) {
-      this.$axios.post('/api/transactions', dataTransaction).then(({ data }) => {
-        this.$router.push('/')
+      this.$axios.post('/api/transactions', dataTransaction).then(() => {
+        this.$router.push('/transaction-history')
         this.snackbar = true
       })
     },
