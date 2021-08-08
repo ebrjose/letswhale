@@ -22,7 +22,7 @@
                   v-countUp:onWindowScroll.once="{
                     watchedElId: 'watched_counter',
                     startValue: 0,
-                    endValue: 1000,
+                    endValue: minimum_investment,
                     options: { duration: 1, decimals: 0 }
                   }"
                 /> BUSD
@@ -48,6 +48,7 @@ export default {
   data() {
     return {
       loaded: false,
+      minimum_investment: parseInt(process.env.minimum),
     }
   },
   mounted() {
