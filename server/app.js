@@ -1,5 +1,4 @@
 import express, { json } from 'express'
-import { sequelize } from './db/models'
 import transactionRoutes from './routes/transactions'
 import cors from 'cors'
 

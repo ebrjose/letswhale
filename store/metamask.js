@@ -20,6 +20,7 @@ export const state = () => ({
   busdDecimals: 18,
   blockExplorerUrl: null,
   transactionHistory: [],
+  tvl: {},
 })
 
 export const getters = {
@@ -81,6 +82,9 @@ export const mutations = {
   },
   SET_TRANSACTION_HISTORY(state, value) {
     state.transactionHistory = value
+  },
+  SET_TVL(state, value) {
+    state.tvl = value
   },
 }
 
@@ -234,6 +238,15 @@ export const actions = {
       const { history } = data
       commit('SET_TRANSACTION_HISTORY', history)
       return history
+    } catch (error) {
+      throw error
+    }
+  },
+  async getTVL({ commit }) {
+    try {
+      const { data } = await this.$axios.get('/api/transactions')
+      commit('SET_TVL', data.data)
+      return data.data
     } catch (error) {
       throw error
     }

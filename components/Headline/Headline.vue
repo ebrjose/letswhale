@@ -16,7 +16,7 @@
         <v-col md="4" class="pa-6">
           <div class="counter-item">
             <div class="text">
-              <h3 class="use-text-title ">
+              <h3 class="use-text-title">
                 <span
                   v-if="loaded"
                   v-countUp:onWindowScroll.once="{
@@ -30,6 +30,9 @@
               <p class="use-text-subtitle">
                 <v-icon>mdi-cash-multiple</v-icon>
                 {{ $t('saasLanding.headline_deposit') }}
+                <div>
+                  <small>* Maximum deposit 5000 BUSD</small>
+                </div>
               </p>
             </div>
           </div>
@@ -38,10 +41,6 @@
     </v-container>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import 'counter-style.scss';
-</style>
 
 <script>
 export default {
@@ -56,3 +55,7 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import 'counter-style.scss';
+</style>

@@ -83,11 +83,11 @@
 export default {
   data() {
     return {
-      loaded: false
+      loaded: false,
     }
   },
   mounted() {
     this.loaded = true
-  }
+  },
 }
 </script>
