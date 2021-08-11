@@ -60,7 +60,7 @@
           </p>
 
 
-          <div v-if="loggedIn && !wrongNetwork" class="form">
+          <div v-if="loggedIn && !isWrongNetwork" class="form">
             <v-form
               ref="form"
               v-model="valid"
@@ -183,7 +183,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'wrongNetwork']),
+    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'isWrongNetwork']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1

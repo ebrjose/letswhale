@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <fragment v-if="loggedIn && !wrongNetwork">
+    <fragment v-if="loggedIn && !isWrongNetwork">
       <div class="wallet-data">
         <div class="label">
           Balance:
@@ -35,10 +35,10 @@
       </v-menu>
     </fragment>
     <fragment v-else>
-      <template v-if="wrongNetwork">
+      <template v-if="isWrongNetwork">
         <v-btn color="primary" @click="connectWallet" class="mr-1 red--text text--accent-2 font-weight-bold">
           <v-icon>mdi-alert-octagon-outline</v-icon> &nbsp; &nbsp;
-          WRONG NETWORK
+          SWITCH NETWORK
         </v-btn>
       </template>
       <template v-else>
@@ -85,7 +85,7 @@ export default {
     // DialogMetamask,
   },
   computed: {
-    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'accountShorted', 'wrongNetwork', 'totalInvested']),
+    ...mapGetters('metamask', ['humanBusdBalance', 'loggedIn', 'accountShorted', 'isWrongNetwork', 'totalInvested']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.indexOf(this.$mq) > -1

@@ -1,4 +1,4 @@
-import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, MINIMUM_INVESTMENT, MAXIMUM_INVESTMENT } from './constants'
+import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT } from './constants'
 import { weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
 
@@ -39,8 +39,8 @@ export const getters = {
   humanBusdBalance(state) {
     return state.busdBalance ? (state.busdBalance / 10 ** state.busdDecimals).toFixed(2) : 0
   },
-  wrongNetwork(state) {
-    return state.chainId !== CHAINID
+  isWrongNetwork(state) {
+    return parseInt(state.chainId) !== parseInt(CHAINID)
   },
   totalInvested(state) {
     return state.totalSent ? state.totalSent.toFixed(2) : 0
@@ -91,7 +91,7 @@ export const mutations = {
 export const actions = {
   async connectWallet({ dispatch, commit }) {
     if (typeof window.ethereum !== 'undefined') {
-      if (parseInt(window.ethereum.chainId, 16) === CHAINID) {
+      if (parseInt(window.ethereum.chainId, 16) === parseInt(CHAINID)) {
         dispatch('getAccount')
       } else {
         const provider = await dispatch('getProvider')
@@ -110,15 +110,17 @@ export const actions = {
   },
   disconnectWallet({ commit, dispatch }) {
     commit('CLEAR_DATA')
-    dispatch('setNetwork')
+    dispatch('setBrowserChainId')
   },
   async getAccount({ commit, dispatch }) {
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-    const account = accounts[0]
-    commit('SET_ACCOUNT', account)
-    dispatch('getWalletBalance')
-    dispatch('getInvestedAmount')
-    dispatch('fetchTransactionHistory')
+    if (parseInt(window.ethereum.chainId, 16) === parseInt(CHAINID)) {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+      const account = accounts[0]
+      commit('SET_ACCOUNT', account)
+      dispatch('getWalletBalance')
+      dispatch('getInvestedAmount')
+      dispatch('fetchTransactionHistory')
+    }
   },
   changeEthereumChain({ dispatch }) {
     window.ethereum
@@ -133,7 +135,10 @@ export const actions = {
   },
   async getBNBTokenBalance({ state, commit }) {
     const account = state.account
-    const balance = await window.ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] })
+    const balance = await window.ethereum.request({
+      method: 'eth_getBalance',
+      params: [account, 'latest'],
+    })
     commit('SET_BALANCE', balance)
     return balance
   },
@@ -164,7 +169,7 @@ export const actions = {
     const provider = await detectEthereumProvider()
     return provider
   },
-  async setNetwork({ commit }) {
+  async setBrowserChainId({ commit }) {
     const chainId = parseInt(window.ethereum.chainId, 16)
     commit('SET_CHAINID', chainId)
   },

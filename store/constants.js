@@ -1,4 +1,4 @@
-export const CHAINID = process.env.CHAIN_ID || 97
+export const CHAINID = process.env.CHAIN_ID
 
 export const ETHEREUM_CHAIN = {
   56: {

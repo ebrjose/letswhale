@@ -33,8 +33,8 @@ export default {
   created() {
     if (process.browser && typeof window.ethereum !== 'undefined') {
       this.checkConection()
-      ethereum.on('chainChanged', chainId => {
-        this.setNetwork()
+      window.ethereum.on('chainChanged', chainId => {
+        this.setBrowserChainId()
       })
     }
   },
@@ -58,9 +58,9 @@ export default {
     this.$vuetify.rtl = rtlURL
   },
   methods: {
-    ...mapActions('metamask', ['connectWallet', 'disconnectWallet', 'setNetwork']),
+    ...mapActions('metamask', ['connectWallet', 'disconnectWallet', 'setBrowserChainId']),
     checkConection() {
-      this.setNetwork()
+      this.setBrowserChainId()
       const metamaskAccount = localStorage.getItem('account')
       const chainId = localStorage.getItem('chainId')
       if (metamaskAccount && chainId == CHAINID) {
