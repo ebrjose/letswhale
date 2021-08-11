@@ -30,6 +30,10 @@
         <next />
       </section>
 
+      <section id="tvl">
+        <tvl />
+      </section>
+
     </div>
     <section id="footer">
       <footer-with-deco />
@@ -51,6 +55,7 @@ import Headline from '~/components/Headline'
 import Feature from '~/components/Feature'
 import Last from '~/components/Last'
 import Next from '~/components/Next'
+import Tvl from '~/components/Tvl'
 import PricingPlan from '~/components/PricingPlan'
 // import Faq from '~/components/Faq'
 // import NewsEvent from '~/components/NewsEvent'
@@ -71,6 +76,7 @@ export default {
     PageNav,
     Hidden,
     PricingPlan,
+    Tvl,
   },
   computed: {
     isTablet() {

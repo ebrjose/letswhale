@@ -1,7 +1,14 @@
-import { Transaction } from '../db/models'
+import { sequelize, Transaction } from '../db/models'
 export async function getTransactions(req, res) {
   try {
-    const transactions = await Transaction.findAll()
+    const transactions = await Transaction.findOne({
+      where: { status: 'success' },
+      attributes: [
+        [sequelize.fn('count', sequelize.fn('distinct', sequelize.col('accountHash'))), 'total_investors'],
+        [sequelize.fn('sum', sequelize.col('amountDec')), 'total_tvl'],
+      ],
+    })
+
     res.json({
       data: transactions,
     })
