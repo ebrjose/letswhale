@@ -18,6 +18,9 @@
           </h4>
         </v-card>
       </v-col>
+      <v-col cols="12" sm="7">
+        <small>* We will refund all the money without charging anything to all our users, if we do not gather an amount that allows us to be a whale in at least one launchpad, in the first 4 weeks (until september 12th 2021).</small>
+      </v-col>
     </v-row>
   </v-container>
 </template>
