@@ -13,7 +13,7 @@
         <v-card class="pa-10" flat rounded>
           <h3 class="title font-weight-bold">Total Value Locked (TVL)</h3>
           <h4 class="display-2 font-weight-bold mt-10" id="tvlCounter">
-            {{ tvl.total_tvl | numberToLocale }}
+            {{  (Math.round(tvl.total_tvl * 100) / 100).toLocaleString() }}
             BUSD
           </h4>
         </v-card>
@@ -27,7 +27,10 @@ export default {
   data() {
     return {
       loaded: false,
-      tvl: {},
+      tvl: {
+        total_investors: 0,
+        total_tvl: 0,
+      },
     }
   },
   mounted() {
