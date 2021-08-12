@@ -16,7 +16,7 @@ export const state = () => ({
   isMetaMask: false,
   walletAccount: WALLET_ACCOUNT,
   busdBalance: null,
-  busdContractAddress: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
+  busdContractAddress: null,
   busdDecimals: 18,
   blockExplorerUrl: null,
   transactionHistory: [],
@@ -60,6 +60,7 @@ export const mutations = {
   SET_CHAINID(state, chainId) {
     state.chainId = chainId
     state.blockExplorerUrl = ETHEREUM_CHAIN[chainId].blockExplorerUrls[0]
+    state.busdContractAddress = ETHEREUM_CHAIN[chainId].busdContractAddress
   },
   CLEAR_DATA(state) {
     state.account = null
