@@ -7,7 +7,6 @@ export const ETHEREUM_CHAIN = {
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     rpcUrls: ['https://bsc-dataseed.binance.org/'],
     blockExplorerUrls: ['https://bscscan.com'],
-    busdContractAddress: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
   },
   97: {
     chainId: '0x61',
@@ -15,8 +14,12 @@ export const ETHEREUM_CHAIN = {
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
     rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
     blockExplorerUrls: ['https://testnet.bscscan.com'],
-    busdContractAddress: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
   },
+}
+
+export const CONTRACT_ADDRESS = {
+  56: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
+  97: '0xed24fc36d5ee211ea25a80239fb8c4cfd80f12ee',
 }
 
 export const WALLET_ACCOUNT = process.env.WALLET_ACCOUNT

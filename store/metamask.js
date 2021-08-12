@@ -1,4 +1,4 @@
-import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT } from './constants'
+import { CHAINID, ETHEREUM_CHAIN, WALLET_ACCOUNT, CONTRACT_ADDRESS } from './constants'
 import { weihex2dec } from '~/assets/utils/number'
 import detectEthereumProvider from '@metamask/detect-provider'
 
@@ -60,7 +60,7 @@ export const mutations = {
   SET_CHAINID(state, chainId) {
     state.chainId = chainId
     state.blockExplorerUrl = ETHEREUM_CHAIN[chainId].blockExplorerUrls[0]
-    state.busdContractAddress = ETHEREUM_CHAIN[chainId].busdContractAddress
+    state.busdContractAddress = CONTRACT_ADDRESS[chainId]
   },
   CLEAR_DATA(state) {
     state.account = null
