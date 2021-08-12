@@ -59,7 +59,7 @@ export const mutations = {
   },
   SET_CHAINID(state, chainId) {
     state.chainId = chainId
-    state.blockExplorerUrl = ETHEREUM_CHAIN[chainId].blockExplorerUrls[0]
+    state.blockExplorerUrl = ETHEREUM_CHAIN[chainId]?.blockExplorerUrls[0]
     state.busdContractAddress = CONTRACT_ADDRESS[chainId]
   },
   CLEAR_DATA(state) {
@@ -129,7 +129,9 @@ export const actions = {
       .then(() => {
         dispatch('getAccount')
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        throw error
+      })
   },
   async getWalletBalance({ dispatch }) {
     return await dispatch('getBUSDTokenBalance')
